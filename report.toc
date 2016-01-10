@@ -1,0 +1,14 @@
+\ttl@change@i {\@ne }{section}{0pt}{}{\contentsmargin {0pt} \thecontentslabel \enspace }{\contentsmargin {0pt}}{\titlerule *[.5pc]{.}\contentspage }\relax 
+\ttl@change@v {section}{}{}{}\relax 
+\contentsline {section}{List of Tables and Figures}{iii}
+\contentsline {section}{Summary}{iv}
+\contentsline {section}{\numberline {1.0 }Introduction}{1}
+\contentsline {section}{\numberline {2.0 }The Problem }{2}
+\contentsline {subsection}{\numberline {2.1}Reducing Draw Calls}{2}
+\contentsline {subsection}{\numberline {2.2}Render States }{3}
+\contentsline {subsection}{\numberline {2.3}Render Order}{3}
+\contentsline {section}{\numberline {3.0 }Conclusions}{5}
+\contentsline {section}{\numberline {4.0 }Recommendations}{6}
+\contentsline {section}{References}{7}
+\contentsline {section}{Glossary}{8}
+\contentsfinish 

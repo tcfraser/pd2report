@@ -1,72 +1,65 @@
 \documentclass[12pt]{article}
-\usepackage{pd2}
+\usepackage{PDReport}
 \usepackage{lipsum} % remove this
 
-% Your information
-%   Enter your report information here
-\faculty{Faculty of Mathematics}
-\reporttitle{Lorem Ipsum}
-\fullname{Liam Horne}
-\term{2A}
-\program{Computer Science}
-\studentid{20465555}
-\address{123 Apple Street}
-\city{Cambridge, Ontario}
-\postalcode{A1X B2Y}
-\pdtitle{PD2: Critical Reflection and Report Writing}
+% My information
+\const{faculty}{Faculty of Physics \& Astronomy}
+\const{reportTitle}{Acoustic Modelling Using Mel-Frequency Cepstral Coefficients}
+\const{fullName}{Thomas C. Fraser}
+\const{term}{3A}
+\const{program}{Mathematical Physics}
+\const{studentID}{20460785}
+\const{address}{154 Quarry Ave.}
+\const{city}{Renfrew, Ontario}
+\const{postalCode}{K7V 2W4}
+\const{employer}{Sysomos}
+\const{employerCity}{Toronto, Ontario}
+
+% Glosasary
+\makenoidxglossaries
+\newglossaryentry{spriteSheet}
+{
+  name={Sprite Sheet},
+  text={sprite sheet},
+  description={Sprite Sheets are the tradtional technology used to minimize the number of draw calls. A collection of smaller image files compiled into one large image by third-party software},
+  plural={sprite sheets}
+}
 
 % Title Page (ignore)
-%   Creates the title page based on your information above
 \newcommand{\createtitlepage} {
   \pagenumbering{roman}
   \waterlootitlepage
-    {\myFaculty}
-    {\myTitle}
-    {\myPD \\ \UwLocation}
-    {\myName \\ \myTerm \ \myProgram \\ ID \myIdNumber \\ \today}
+    {\faculty}
+    {\reportTitle}
+    {\employer \\ \employerCity}
+    {\fullName \\ \term \ \program \\ ID \studentID \\ \today}
 }
 
 % Letter of Submittal
-%   Write your letter of submittal below, the header, salutation,
-%   and signature (except the image) are done for you already
 \newcommand{\letterofsubmittal} {
   \waterlooletterofsubmittal
-    {\myAddress}{\myCity}{\myPostalCode}{\myName}{\myIdNumber}
+    {\address}{\city}{\postalCode}{\fullName}{\studentID}
     {
+    I have prepared the enclosed report ``\reportTitle'' as my \term Work Report for my work term spent at \employer in \employerCity. This is my second work term report. The purpose of this report is to examine the problems associated with a popular technique used in application design known as a \gls{spriteSheet}. I aim to convince anyone familiar with the ideas discussed to consider the solution I propose to solve these problems. This report uses the techniques I developed while tactling these problems but is targeted at a audience with a wider range of applications.
 
-    \lipsum[1] % remove this line
+    \employer is currently working on a multi-platform video game. My supervisor, Elyot Grant, assigned me with overcoming some limitations of graphics API used.
 
-    % Write your letter here
-
+    This report was written entirely by me and has not received any previous academic credit at this or any other institution. I give permission to \employer to keep a copy of this report on file and use it as necessary in the future.
     }
     {
-    % Attach an image of your signature
-    % The first number is a scale factor
-    % (if you can't, just delete this and uncomment next line)
-     \scalebox{0.1}{\includegraphics{examplesignature.jpg}}
-    % \myName
+     \scalebox{0.11}{\includegraphics{sign.png}}
     }
 }
 
-% Table of Contents
-%   The table of contents will be generated for you
-
 % Summary
-%   Write your summary here
 \newcommand{\summary}{
   \tocsection{Summary}
   {
-
-  \lipsum[10-11] % remove this line
-
-  % Write your summary here
-
   }
   \newpage
 }
 
 % Introduction
-%   Write an introduction here
 \newcommand{\introduction}{
   \fancyhf{}
   \pagestyle{fancy}
@@ -76,124 +69,59 @@
   \mySection{Introduction}
   {
 
-  \lipsum[8-9] % remove this line
-
-  % Write your introduction here
-
+  }
+  \newpage
+}
+\newcommand{\analysis}{
+  \mySection{The Problem \label{sec:problem}}{
+    One of the primary objectives of a graphics or user interface developer is to optimize as many aspects as possible in order to provide and pleasant experience for the user. Umoung many of these objectives is having a well designed visual hierarchy, attractive graphics and theme, and a smooth experience. Developing a smooth performance is tricky, especially when developing applications with dynamically changing resolutions, or one with many assets, a complicated render-order, or that displays images that can be modified by the user.
+    \mySubSection{Reducing Draw Calls}{
+    In order to improve the end-user experience, many parameters need to be optimized. Some of these paramters include the number of frames per second (FPS), the total memory used by the application, the CPU load, the number of draw calls, etc. All of these parameters are intimately connected, but one of the most important factors that affects performance is draw calls. Draw calls, loosely speaking, represent the number of distinct rendering states the GPU transitions through while rendering an given frame. It is a quantity that can change anytime during runtime.
+    }
+    \mySubSection{Render States \label{sec:renderStates}}{
+    Defining a unique render state is complicated. It can depend on the GPU hardware, the way an \gls{image} is blended into the images behind it, the transparency of the \gls{image}, the source \gls{texture} object or the smoothing values associated with the \gls{texture}. However, for the following analysis, we will simplify the notion of a render state to be the be associated directly with the \gls{concreteTexture} being rendered from. Therefore, a draw call corresponds to switching from one concrete texture to another.
+    }
+    \mySubSection{Render Order}{
+    The GPU renders any given frame within the application by iterating though each of the images that might appear on the screen, calculating the resultant position on the screen based on a global matrix associated with the \gls{image} that encodes it's position, scale, skew, and orientation. The order in which the images are rendered directly affects the number of render states. The worst case scenario occurs when every \gls{image} on the screen is rendered from it's own distinct \gls{concreteTexture}. As a result, when the GPU switches from rendering one \gls{image} to the next, it needs to switch which \gls{concreteTexture} is has active, increasing the number of draw calls by one. With potentially thousands of images on the screen, the GPU would have to make 1000 draw calls. This is extremely inefficient and can be improved by combining the textures of each \gls{image} together into one larger \gls{image} that shares the same \gls{concreteTexture}.
+    }
   }
   \newpage
 }
 
-% Analysis (body)
-%   Write the body of your report here
-%   Section Headers:
-%     \mySection{ title }{ ... } will create a new section block
-%     \mySubSection{ title }{ ... } will create a new subsection block
-%     \mySubSubSection{ title }{ ... } will create a new subsubsection block
-%   Bullet Points:
-%     \bulletpoints{
-%        \item bullet point 1
-%        \item bullet point 2 (and so on)
-%     }
-%   For Figures:
-%     \myFigure{ scaling factor }{ image.jpg }{ caption } adds a figure
-%   For Tables:
-%     \myTable{ scaling factor }{ table.jpg }{ caption }
-%     (if your table is an image) or you need to learn normal LaTeX syntax
-%     Read this for help: http://en.wikibooks.org/wiki/LaTeX/Tables
-\newcommand{\analysis}{
-
-  % Write your body here
-
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%% This is an example, remove this entire block %%%%%%%%%
-  \mySection{My Amazing Section}{
-    \lipsum[2]
-    \mySubSection{My Amazing SubSection} {
-      \lipsum[12]
-      \bulletpoints{
-      \item first item
-      \item second item
-      }
-      \mySubSubSection{My Amazing SubSubSection} {
-        \lipsum[10]
-        \myFigure{0.10}{examplefigure.jpg}{Hello, World}
-        \lipsum[11-12]
-        \myTable{0.3}{exampletable.png}{Hello, Table}
-      }
-    }
-  }
-  \mySection{My Amazing Section}{
-    \lipsum[2]
-    \mySubSection{My Amazing SubSection} {
-      \lipsum[12]
-      \mySubSubSection{My Amazing SubSubSection} {
-        \lipsum[18-21]
-      }
-    }
-  }
-  %%%%%%% This is an example, remove this entire block %%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-  \newpage % This creates a new page, your may or may not want this, remove at your own discretion
-
-}
-
 % Conclusions
-%   Write your Conclusions
 \newcommand{\conclusions}{
   \section{Conclusions}
   {
-
-  \lipsum[33-35] % remove this line
-
-  % Write your conclusions here
-
+  \conclusion{Sprite Sheets limit the Features and Development of the Application}{
+  Traditional sprite sheets are limited by the size of \gls{spriteSheet} the GPU can handle. This indirectly encourages developers to only support specific resolutions, limit user control over graphics, and to reduce the visual complexity of the application to solve this problem.
+  }
   }
 }
 
 % Recommendations
-%   Write your Recommendations here
 \newcommand{\recommendations}{
   \section{Recommendations}
   {
-
-  \lipsum[37-39] % remove this line
-
-  % Write your recommendations here
-
+  \recommendation{Consider streaming all necessary assets from an external server.}{
+  With dynamic sprite sheets, it is a good practice to store every graphic on an external server that can be downloaded by the application only once and cached. These individual files can be allocated to a dynamic \gls{spriteSheet} only when needed, reducing memory, and improving performancing.
+  }
   }
 }
 
 % References
-%   Add your own References
 \newcommand{\references}{
   \makereferences{
-      % Add each reference like this, with some label for each item
+      \bibitem{spriteSheet}
+      Williams, M. (2013). 10 Great Full Game Sprite Sheets From GraphicRiver. Retrieved 11 May, 2015 from http://gamedevelopment.tutsplus.com/articles/10-great-full-game-sprite-sheets-from-graphicriver--gamedev-3797
+      \bibitem{TexturePacker}
+      CodeAndWeb GmbH. (2015). TexturePacker online documentation. Retrieved 11 May, 2015 from https://www.codeandweb.com/texturepacker/documentation\bibitem{DrawCall}
+      Unity Technologies. (2015). Unit Documentation: Draw Call Batching. Retrieved 11 May, 2015 from http://docs.unity3d.com/Manual/DrawCallBatching.htmldocumentation
       \bibitem{labelName}
       Champion, R., Paci, T. \& Vardon, J. (2012). PD 2: Critical Reflection and Report Writing. Retrieved 1 March, 2012 from https://learn.uwaterloo.ca/d2l/le/content/80224/viewContent/605550/View
+      \textbf{Note:} \cite{labelName} was referenced to format this report.
   }
 }
 
-% Appendices
-%   Add your appendices
-\newcommand{\myappendix}{
-  \addanappendix{Appendix A: Lorem Ipsum}{
-    \lipsum[50] % remove this line
-  }
-  \newpage
-  \addanappendix{Appendix B: PD2 Report Checlist}{\addchecklistappendix}
-}
-
-\begin{document}
-  \createtitlepage
-  \letterofsubmittal
-  \mytableofcontents
-  \summary
-  \introduction
-  \analysis
-  \conclusions
-  \recommendations
-  \references
-  \myappendix
-\end{document}
+\begin{document}   \createtitlepage   \letterofsubmittal   \mytableofcontents
+\summary   \introduction   \analysis   \conclusions   \recommendations
+\references   \placeglossary \end{document}

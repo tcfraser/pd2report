@@ -1,0 +1,403 @@
+This is makeindex, version 2.15 [MiKTeX 2.9] (kpathsea + Thai support).
+Scanning input file report.tex...
+!! Input index error (file = report.tex, line = 1):
+   -- Unknown index keyword \documentclass[12pt].
+!! Input index error (file = report.tex, line = 2):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = report.tex, line = 3):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = report.tex, line = 5):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 6):
+   -- Unknown index keyword \const.
+!! Input index error (file = report.tex, line = 7):
+   -- Unknown index keyword \const.
+!! Input index error (file = report.tex, line = 8):
+   -- Unknown index keyword \const.
+!! Input index error (file = report.tex, line = 9):
+   -- Unknown index keyword \const.
+!! Input index error (file = report.tex, line = 10):
+   -- Unknown index keyword \const.
+!! Input index error (file = report.tex, line = 11):
+   -- Unknown index keyword \const.
+!! Input index error (file = report.tex, line = 12):
+   -- Unknown index keyword \const.
+!! Input index error (file = report.tex, line = 13):
+   -- Unknown index keyword \const.
+!! Input index error (file = report.tex, line = 14):
+   -- Unknown index keyword \const.
+!! Input index error (file = report.tex, line = 15):
+   -- Unknown index keyword \const.
+!! Input index error (file = report.tex, line = 17):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 18):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 19):
+   -- Unknown index keyword \newglossaryentry.
+!! Input index error (file = report.tex, line = 20):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 21):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 22):
+   -- Unknown index keyword description=.
+!! Input index error (file = report.tex, line = 23):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 24):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 26):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 27):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = report.tex, line = 28):
+   -- Unknown index keyword \pagenumbering.
+!! Input index error (file = report.tex, line = 29):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 30):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 31):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 32):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 33):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 34):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 36):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 37):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = report.tex, line = 38):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 39):
+   -- Unknown index keyword {\address}.
+!! Input index error (file = report.tex, line = 40):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 41):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 43):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 45):
+   -- Unknown index keyword Thepurposeofthisreportistoexaminetheproblemsassociatedwithapopulartechniqueusedinapplicationdesignknownas\gls.
+!! Input index error (file = report.tex, line = 47):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 48):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 49):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 50):
+   -- Unknown index keyword \scalebox.
+!! Input index error (file = report.tex, line = 51):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 52):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 54):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 55):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = report.tex, line = 56):
+   -- Unknown index keyword \tocsection.
+!! Input index error (file = report.tex, line = 57):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 58):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 60):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 62):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 64):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 65):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 66):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 67):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 69):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 70):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = report.tex, line = 71):
+   -- Unknown index keyword \fancyhf.
+!! Input index error (file = report.tex, line = 72):
+   -- Unknown index keyword \pagestyle.
+!! Input index error (file = report.tex, line = 73):
+   -- Unknown index keyword \renewcommand.
+!! Input index error (file = report.tex, line = 74):
+   -- Unknown index keyword \rfoot.
+!! Input index error (file = report.tex, line = 75):
+   -- Unknown index keyword \pagenumbering.
+!! Input index error (file = report.tex, line = 76):
+   -- Unknown index keyword \mySection.
+!! Input index error (file = report.tex, line = 77):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 78):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 80):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 82):
+   -- Unknown index keyword GPU'soutperformCPU'sbecausetheyarespecificallydesignedtoprocessandrendertrianglestothescreen.Typically,everythingtheuserseesonthescreenisfundamentallyunderstoodbytheGPUasatriangle.Any$n$-gonobjectthatissenttotheGPUtoberenderediseventuallydecomposedinto$n-2$trianglesasdepictedinfigure\ref.
+!! Input index error (file = report.tex, line = 84):
+   -- Unknown index keyword \mySVGFigure.
+!! Input index error (file = report.tex, line = 86):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 88):
+   -- Unknown index keyword Optimizingthegraphicsperformanceofanapplicationisdifficult.Thereexistsamultitudeofmetricsandthird-partyapplicationsthatcanbeusedtodeterminewaystoimproveperformance.Oneimportantmetricandareaoffocuswillbedrawcalls.Drawcallsaredifficulttocontrolastheyaredeterminedbynumerousfactors,somediscussedinsection\ref.
+!! Input index error (file = report.tex, line = 90):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 91):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 92):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 93):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 94):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = report.tex, line = 95):
+   -- Unknown index keyword \mySection.
+!! Input index error (file = report.tex, line = 96):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 97):
+   -- Unknown index keyword \mySubSection.
+!! Input index error (file = report.tex, line = 98):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 99):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 100):
+   -- Unknown index keyword \mySubSection.
+!! Input index error (file = report.tex, line = 101):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 102):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 103):
+   -- Unknown index keyword \mySubSection.
+!! Input index error (file = report.tex, line = 104):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 105):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 106):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 107):
+   -- Unknown index keyword \mySection.
+!! Input index error (file = report.tex, line = 108):
+   -- Unknown index keyword Aspritesheetisaverycommonsolutionusedbynumerousapplicationstosolvetheproblemsdiscussedinsection\ref.
+!! Input index error (file = report.tex, line = 110):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 112):
+   -- Unknown index keyword Typically,adeveloperwillusethird-partysoftwaresuchas\emph.
+!! Input index error (file = report.tex, line = 114):
+   -- Unknown index keyword \myFigure.
+!! Input index error (file = report.tex, line = 115):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 116):
+   -- Unknown index keyword \mySection.
+!! Input index error (file = report.tex, line = 117):
+   -- Unknown index keyword Asdiscussedin\ref.
+!! Input index error (file = report.tex, line = 118):
+   -- Unknown index keyword \mySubSection.
+!! Input index error (file = report.tex, line = 119):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 121):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 122):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 123):
+   -- Unknown index keyword \mySubSection.
+!! Input index error (file = report.tex, line = 124):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 125):
+   -- Unknown index keyword \mySubSubSection.
+!! Input index error (file = report.tex, line = 126):
+   -- Unknown index keyword Whengeneratingaspritesheet,itisalwaysagoodideatoputeveryspriteusedbytheapplciationontothespritesheet.Thisbehaviourisbenficialforreasonsdiscussedinsection\ref.
+!! Input index error (file = report.tex, line = 127):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 128):
+   -- Unknown index keyword \mySubSubSection.
+!! Input index error (file = report.tex, line = 129):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 131):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 132):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 133):
+   -- Unknown index keyword \mySubSubSection.
+!! Input index error (file = report.tex, line = 134):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 135):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 136):
+   -- Unknown index keyword \mySubSection.
+!! Input index error (file = report.tex, line = 137):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 138):
+   -- Unknown index keyword \mySubSubSection.
+!! Input index error (file = report.tex, line = 139):
+   -- Unknown index keyword Theimplementationthatco-operateswithspritesheetsisusingbitmapfonts.Thismeansanspriteofeachletterorglyphisembeddedintothespritesheetjustlikeeveryothersprite.Todisplaysometextasalabelorsectenceintheapplicationmeanshavingasub-textureforeveryglyphandanimageforeverycharacterinthelabel.Theadvantageisthatlabelsdonotincreasethenumberdrawcallsbecausetheybehaveaseveryotherimageintheapplication.Thedisadvantageisthatbitmapfontsarerasterizedandonlylookclearataspecificresolution.Anyapplicationthatplanstosupportmultipleplatformsneededtohaveabitmapfontforeachresolutionthatitintendstosupport.Thiscanbedifficulttomanagefortworeasons.Firstly,manycopiesofthesamebitmapfontatdifferentscalesfillsupthetotalphysicalspaceofaspritesheetquickly.Secondly,desktopapplicationsthatwanttosupportanyresolutionhavetosacrificeclarityoftextandsomeresolutions.Thesedisadvantagesarenotpresentwhenusingvectorfonts,asdiscussedinsection\ref.
+!! Input index error (file = report.tex, line = 140):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 141):
+   -- Unknown index keyword \mySubSubSection.
+!! Input index error (file = report.tex, line = 142):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 143):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 144):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 145):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 146):
+   -- Unknown index keyword \mySection.
+!! Input index error (file = report.tex, line = 147):
+   -- Unknown index keyword Thecurrentproblemsfacedbydevelopersusingtraditionalspritesheets,asdiscussedinsection\ref.
+!! Input index error (file = report.tex, line = 148):
+   -- Unknown index keyword \mySubSection.
+!! Input index error (file = report.tex, line = 149):
+   -- Unknown index keyword Manyoftheissueswithtraditionalspritesheetscanbesolvedbyhavingthespritesheetgenerationdonewithintheapplication.Thismeanstakingeachofthespritesindividuallyasbitmapobjects,andusingsomerectanglepackingalgorithm(seesection\ref.
+!! Input index error (file = report.tex, line = 150):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 151):
+   -- Unknown index keyword \mySubSection.
+!! Input index error (file = report.tex, line = 152):
+   -- Index keyword Traditionally,whendevelopersrunoutofspaceonaspritesheet,theycreateanotherspritesheettoaddspritesto.Atthispoint,theadditionaldrawcallsincurredseemunavoidable.Furthermore,adeveloperwouldthenneedtospecifywhichspritesheetanygiventexturewasfrominordertoaccessit.Dynamicspritesheetscansolvethisproblem.Effectively,whenthepackingalgorithmrunsoutofspace,itcangenerateanewtexturetobeginplacingsprites.Thiscanrepeatedindefinately,andasaconsequenceDSS'scancontainanverylargenumberofsprites,aslongaseachindividualspriteislessthatthemaximumsizeofasingletexture.Thisprocessiscalledmulti-packing.Dynamicspritesheetscanthenprovideaninterfaceforthedevelopertoaccessatexturethatistransparenttowhichtextureitbelongs.Atfirstglance,thisseemstocompletelysolvethephysicalspacelimitationsoftraditionalspritesheets.However,ifnotdonecarefully,thenumberofdrawcallscanbecomemuchworstthanthebestpossiblevalue$n$,where$n$isthenumberoftexturesneededbytheDSS.Iftherender-orderofthescreendoesn'tfollowlooselyfollowtheorderinwhichspritesareorderedacrosstheteâ¦w/9’ too long (max 1024).
+!! Input index error (file = report.tex, line = 153):
+   -- Unknown index keyword \mySubSubSection.
+!! Input index error (file = report.tex, line = 154):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 155):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 156):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 157):
+   -- Unknown index keyword \mySubSection.
+!! Input index error (file = report.tex, line = 158):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 159):
+   -- Unknown index keyword \mySubSubSection.
+!! Input index error (file = report.tex, line = 160):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 161):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 162):
+   -- Unknown index keyword \mySubSubSection.
+!! Input index error (file = report.tex, line = 163):
+   -- Unknown index keyword Themostdifficultaspectofdrawcalloptimizationisrenderingfontsasdiscussedinsection\ref.
+!! Input index error (file = report.tex, line = 164):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 165):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 166):
+   -- Unknown index keyword \mySubSection.
+!! Input index error (file = report.tex, line = 167):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 168):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 169):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 170):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 171):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 172):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 174):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 175):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = report.tex, line = 176):
+   -- Unknown index keyword \section.
+!! Input index error (file = report.tex, line = 177):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 178):
+   -- Unknown index keyword \conclusion.
+!! Input index error (file = report.tex, line = 179):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 180):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 181):
+   -- Unknown index keyword \conclusion.
+!! Input index error (file = report.tex, line = 182):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 183):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 184):
+   -- Unknown index keyword \conclusion.
+!! Input index error (file = report.tex, line = 185):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 186):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 187):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 188):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 190):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 191):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = report.tex, line = 192):
+   -- Unknown index keyword \section.
+!! Input index error (file = report.tex, line = 193):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 194):
+   -- Unknown index keyword \recommendation.
+!! Input index error (file = report.tex, line = 195):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 196):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 197):
+   -- Unknown index keyword \recommendation.
+!! Input index error (file = report.tex, line = 198):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 199):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 200):
+   -- Unknown index keyword \recommendation.
+!! Input index error (file = report.tex, line = 201):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 202):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 203):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 204):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 206):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 207):
+   -- Unknown index keyword \newcommand.
+!! Input index error (file = report.tex, line = 208):
+   -- Unknown index keyword \makereferences.
+!! Input index error (file = report.tex, line = 209):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 210):
+   -- Unknown index keyword \bibitem.
+!! Input index error (file = report.tex, line = 211):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 212):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 213):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 215):
+   -- Unknown index keyword \begin.
+!! Input index error (file = report.tex, line = 216):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 217):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 218):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 219):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 220):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 221):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 222):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 223):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 224):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 225):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = report.tex, line = 226):
+   -- Unknown index keyword \end.
+done (0 entries accepted, 199 rejected).
+Nothing written in report.ind.
+Transcript written in report.ilg.
