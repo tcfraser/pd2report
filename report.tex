@@ -40,7 +40,7 @@
   \waterlooletterofsubmittal
     {\address}{\city}{\postalCode}{\fullName}{\studentID}
     {
-    I have prepared the enclosed report ``\reportTitle'' as my \term Work Report for my work term spent at \employer in \employerCity. This is my second work term report. The purpose of this report is to examine the problems associated with a popular technique used in application design known as a \gls{spriteSheet}. I aim to convince anyone familiar with the ideas discussed to consider the solution I propose to solve these problems. This report uses the techniques I developed while tactling these problems but is targeted at a audience with a wider range of applications.
+    I have prepared the enclosed report ``\reportTitle'' as my \term Work Report for my work term spent at \employer in \employerCity. This is my second work term report. The purpose of this report is to examine the problems associated with a popular technique used in application design known as a spriteSheet. I aim to convince anyone familiar with the ideas discussed to consider the solution I propose to solve these problems. This report uses the techniques I developed while tactling these problems but is targeted at a audience with a wider range of applications.
 
     \employer is currently working on a multi-platform video game. My supervisor, Elyot Grant, assigned me with overcoming some limitations of graphics API used.
 
@@ -68,24 +68,108 @@
   \pagenumbering{arabic}
   \mySection{Introduction}
   {
-
+    Sysomos is a Toronto, Ontario based company with secondary offices all across the world. They are a leader in social media management and have over 1000
+    % Social domain/ motivation
+    % Augmenting Social Data (Search/indexing)
+    % Frame recommendation
+    % Speech
+    % Music genre
   }
   \newpage
 }
 \newcommand{\analysis}{
-  \mySection{The Problem \label{sec:problem}}{
-    One of the primary objectives of a graphics or user interface developer is to optimize as many aspects as possible in order to provide and pleasant experience for the user. Umoung many of these objectives is having a well designed visual hierarchy, attractive graphics and theme, and a smooth experience. Developing a smooth performance is tricky, especially when developing applications with dynamically changing resolutions, or one with many assets, a complicated render-order, or that displays images that can be modified by the user.
-    \mySubSection{Reducing Draw Calls}{
-    In order to improve the end-user experience, many parameters need to be optimized. Some of these paramters include the number of frames per second (FPS), the total memory used by the application, the CPU load, the number of draw calls, etc. All of these parameters are intimately connected, but one of the most important factors that affects performance is draw calls. Draw calls, loosely speaking, represent the number of distinct rendering states the GPU transitions through while rendering an given frame. It is a quantity that can change anytime during runtime.
+  \mySection{Audio Survey}{
+    ...
+    \mySubSection{Social is not Clean}{
+      ...
     }
-    \mySubSection{Render States \label{sec:renderStates}}{
-    Defining a unique render state is complicated. It can depend on the GPU hardware, the way an \gls{image} is blended into the images behind it, the transparency of the \gls{image}, the source \gls{texture} object or the smoothing values associated with the \gls{texture}. However, for the following analysis, we will simplify the notion of a render state to be the be associated directly with the \gls{concreteTexture} being rendered from. Therefore, a draw call corresponds to switching from one concrete texture to another.
+    \mySubSection{Audio Segmentation \& Environment Detection}{
+      ...
     }
-    \mySubSection{Render Order}{
-    The GPU renders any given frame within the application by iterating though each of the images that might appear on the screen, calculating the resultant position on the screen based on a global matrix associated with the \gls{image} that encodes it's position, scale, skew, and orientation. The order in which the images are rendered directly affects the number of render states. The worst case scenario occurs when every \gls{image} on the screen is rendered from it's own distinct \gls{concreteTexture}. As a result, when the GPU switches from rendering one \gls{image} to the next, it needs to switch which \gls{concreteTexture} is has active, increasing the number of draw calls by one. With potentially thousands of images on the screen, the GPU would have to make 1000 draw calls. This is extremely inefficient and can be improved by combining the textures of each \gls{image} together into one larger \gls{image} that shares the same \gls{concreteTexture}.
+    \mySubSection{Solution Exploration}{
+      ...
+      % public apis, paid models, captioning services
+    }
+    \mySubSection{Use Acoustic Modelling}{
+      ...
+      % discuss the acoustic modelling, pronounciation modelling, and language modelling
     }
   }
-  \newpage
+
+  \mySection{Proposed Pipeline}{
+    ...
+    \mySubSection{Video Downloading}{
+      ...
+    }
+    \mySubSection{Audio Extraction}{
+      ...
+    }
+    \mySubSection{Normalizing Signal}{
+      ...
+    }
+    \mySubSection{Classification}{
+      ...
+    }
+    \mySubSection{Augment Data \& Frame Recommendations}{
+      ...
+    }
+  }
+
+  \mySection{Mel-Frequency Cepstral Coefficients Disected}{
+    ...
+    \mySubSection{Windowing}{
+      ...
+    }
+    \mySubSection{Discrete Fourier Transform}{
+      ...
+    }
+    \mySubSection{Triangular Windowing}{
+      ...
+    }
+    \mySubSection{Logarithm of Amplitudes}{
+      ...
+    }
+    \mySubSection{Discrete Cosine Transform}{
+      ...
+    }
+    \mySubSection{Interpretation}{
+      ...
+    }
+    \mySubSection{Deltas and Delta-Deltas}{
+      ...
+    }
+  }
+
+  \mySection{Performance Evaluation}{
+    ...
+    \mySubSection{Binary Classification}{
+      ...
+    }
+    \mySubSection{Feature List}{
+      ...
+    }
+    \mySubSection{Feature Aggregration}{
+      ...
+      \mySubSubSection{Beat Extraction}{
+        ...
+      }
+    }
+    \mySubSection{Data Sets}{
+      ...
+    }
+    \mySubSection{Results}{
+      ...
+      \mySubSubSection{Feature Rankings}{
+        ...
+      }
+      \mySubSubSection{Classification Models}{
+        ...
+      }
+    }
+    \mySubSection{Interpretation}{
+      ...
+    }
+  }
 }
 
 % Conclusions
@@ -93,7 +177,7 @@
   \section{Conclusions}
   {
   \conclusion{Sprite Sheets limit the Features and Development of the Application}{
-  Traditional sprite sheets are limited by the size of \gls{spriteSheet} the GPU can handle. This indirectly encourages developers to only support specific resolutions, limit user control over graphics, and to reduce the visual complexity of the application to solve this problem.
+  Traditional sprite sheets are limited by the size of spriteSheet the GPU can handle. This indirectly encourages developers to only support specific resolutions, limit user control over graphics, and to reduce the visual complexity of the application to solve this problem.
   }
   }
 }
@@ -103,7 +187,7 @@
   \section{Recommendations}
   {
   \recommendation{Consider streaming all necessary assets from an external server.}{
-  With dynamic sprite sheets, it is a good practice to store every graphic on an external server that can be downloaded by the application only once and cached. These individual files can be allocated to a dynamic \gls{spriteSheet} only when needed, reducing memory, and improving performancing.
+  With dynamic sprite sheets, it is a good practice to store every graphic on an external server that can be downloaded by the application only once and cached. These individual files can be allocated to a dynamic spriteSheet only when needed, reducing memory, and improving performancing.
   }
   }
 }
@@ -111,17 +195,21 @@
 % References
 \newcommand{\references}{
   \makereferences{
-      \bibitem{spriteSheet}
-      Williams, M. (2013). 10 Great Full Game Sprite Sheets From GraphicRiver. Retrieved 11 May, 2015 from http://gamedevelopment.tutsplus.com/articles/10-great-full-game-sprite-sheets-from-graphicriver--gamedev-3797
-      \bibitem{TexturePacker}
-      CodeAndWeb GmbH. (2015). TexturePacker online documentation. Retrieved 11 May, 2015 from https://www.codeandweb.com/texturepacker/documentation\bibitem{DrawCall}
-      Unity Technologies. (2015). Unit Documentation: Draw Call Batching. Retrieved 11 May, 2015 from http://docs.unity3d.com/Manual/DrawCallBatching.htmldocumentation
       \bibitem{labelName}
       Champion, R., Paci, T. \& Vardon, J. (2012). PD 2: Critical Reflection and Report Writing. Retrieved 1 March, 2012 from https://learn.uwaterloo.ca/d2l/le/content/80224/viewContent/605550/View
       \textbf{Note:} \cite{labelName} was referenced to format this report.
   }
 }
 
-\begin{document}   \createtitlepage   \letterofsubmittal   \mytableofcontents
-\summary   \introduction   \analysis   \conclusions   \recommendations
-\references   \placeglossary \end{document}
+\begin{document}
+\createtitlepage
+\letterofsubmittal
+\mytableofcontents
+\summary
+\introduction
+\analysis
+\conclusions
+\recommendations
+\references
+\placeglossary
+\end{document}

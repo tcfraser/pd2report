@@ -1,14 +1,38 @@
 \ttl@change@i {\@ne }{section}{0pt}{}{\contentsmargin {0pt} \thecontentslabel \enspace }{\contentsmargin {0pt}}{\titlerule *[.5pc]{.}\contentspage }\relax 
 \ttl@change@v {section}{}{}{}\relax 
-\contentsline {section}{List of Tables and Figures}{iii}
-\contentsline {section}{Summary}{iv}
+\contentsline {section}{List of Tables and Figures}{iv}
+\contentsline {section}{Summary}{v}
 \contentsline {section}{\numberline {1.0 }Introduction}{1}
-\contentsline {section}{\numberline {2.0 }The Problem }{2}
-\contentsline {subsection}{\numberline {2.1}Reducing Draw Calls}{2}
-\contentsline {subsection}{\numberline {2.2}Render States }{3}
-\contentsline {subsection}{\numberline {2.3}Render Order}{3}
-\contentsline {section}{\numberline {3.0 }Conclusions}{5}
-\contentsline {section}{\numberline {4.0 }Recommendations}{6}
-\contentsline {section}{References}{7}
-\contentsline {section}{Glossary}{8}
+\contentsline {section}{\numberline {2.0 }Audio Survey}{2}
+\contentsline {subsection}{\numberline {2.1}Social is not Clean}{2}
+\contentsline {subsection}{\numberline {2.2}Audio Segmentation \& Environment Detection}{2}
+\contentsline {subsection}{\numberline {2.3}Solution Exploration}{2}
+\contentsline {subsection}{\numberline {2.4}Use Acoustic Modelling}{2}
+\contentsline {section}{\numberline {3.0 }Proposed Pipeline}{2}
+\contentsline {subsection}{\numberline {3.1}Video Downloading}{3}
+\contentsline {subsection}{\numberline {3.2}Audio Extraction}{3}
+\contentsline {subsection}{\numberline {3.3}Normalizing Signal}{3}
+\contentsline {subsection}{\numberline {3.4}Classification}{3}
+\contentsline {subsection}{\numberline {3.5}Augment Data \& Frame Recommendations}{3}
+\contentsline {section}{\numberline {4.0 }Mel-Frequency Cepstral Coefficients Disected}{3}
+\contentsline {subsection}{\numberline {4.1}Windowing}{4}
+\contentsline {subsection}{\numberline {4.2}Discrete Fourier Transform}{4}
+\contentsline {subsection}{\numberline {4.3}Triangular Windowing}{4}
+\contentsline {subsection}{\numberline {4.4}Logarithm of Amplitudes}{4}
+\contentsline {subsection}{\numberline {4.5}Discrete Cosine Transform}{4}
+\contentsline {subsection}{\numberline {4.6}Interpretation}{4}
+\contentsline {subsection}{\numberline {4.7}Deltas and Delta-Deltas}{5}
+\contentsline {section}{\numberline {5.0 }Performance Evaluation}{5}
+\contentsline {subsection}{\numberline {5.1}Binary Classification}{5}
+\contentsline {subsection}{\numberline {5.2}Feature List}{5}
+\contentsline {subsection}{\numberline {5.3}Feature Aggregration}{5}
+\contentsline {subsubsection}{\numberline {5.3.1}Beat Extraction}{5}
+\contentsline {subsection}{\numberline {5.4}Data Sets}{6}
+\contentsline {subsection}{\numberline {5.5}Results}{6}
+\contentsline {subsubsection}{\numberline {5.5.1}Feature Rankings}{6}
+\contentsline {subsubsection}{\numberline {5.5.2}Classification Models}{6}
+\contentsline {subsection}{\numberline {5.6}Interpretation}{6}
+\contentsline {section}{\numberline {6.0 }Conclusions}{6}
+\contentsline {section}{\numberline {7.0 }Recommendations}{7}
+\contentsline {section}{References}{8}
 \contentsfinish 
