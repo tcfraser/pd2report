@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.8)  14 JAN 2016 04:45
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.8)  14 JAN 2016 06:16
 entering extended mode
 **T:/GitProjects/pd2report/report.tex
 (T:/GitProjects/pd2report/report.tex
@@ -768,18 +768,18 @@ Package: lipsum 2011/04/14 v1.2 150 paragraphs of Lorem Ipsum dummy text
 \c@lips@count=\count179
 )
 (T:\GitProjects\pd2report\report.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 466.
-LaTeX Font Info:    ... okay on input line 466.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 466.
-LaTeX Font Info:    ... okay on input line 466.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 466.
-LaTeX Font Info:    ... okay on input line 466.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 466.
-LaTeX Font Info:    ... okay on input line 466.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 466.
-LaTeX Font Info:    ... okay on input line 466.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 466.
-LaTeX Font Info:    ... okay on input line 466.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 668.
+LaTeX Font Info:    ... okay on input line 668.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 668.
+LaTeX Font Info:    ... okay on input line 668.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 668.
+LaTeX Font Info:    ... okay on input line 668.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 668.
+LaTeX Font Info:    ... okay on input line 668.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 668.
+LaTeX Font Info:    ... okay on input line 668.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 668.
+LaTeX Font Info:    ... okay on input line 668.
 
 (C:\Users\TC\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -839,17 +839,17 @@ Dictionary: translator-basic-dictionary, Language: English
 File: siunitx-abbreviations.cfg 2015/01/21 v2.6e siunitx: Abbreviated units
 )
 \c__siunitx_mathsf_int=\count186
-LaTeX Font Info:    Try loading font information for U+esint on input line 466.
+LaTeX Font Info:    Try loading font information for U+esint on input line 668.
 
  (C:\Users\TC\AppData\Roaming\MiKTeX\2.9\tex\latex\esint\uesint.fd
 File: uesint.fd 
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 466.
+LaTeX Font Info:    Try loading font information for U+msa on input line 668.
 
 (T:\Programs\MikTex\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 466.
+LaTeX Font Info:    Try loading font information for U+msb on input line 668.
 
 (T:\Programs\MikTex\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -858,32 +858,32 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  [1
 
 {C:/Users/TC/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 468--468
+Underfull \hbox (badness 10000) in paragraph at lines 670--670
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 468--468
+Underfull \hbox (badness 10000) in paragraph at lines 670--670
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 468--468
+Underfull \hbox (badness 10000) in paragraph at lines 670--670
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 468--468
+Underfull \hbox (badness 10000) in paragraph at lines 670--670
 
  []
 
 <sign.png, id=7, 861.2175pt x 199.74625pt>
 File: sign.png Graphic file (type png)
  <use sign.png>
-Package pdftex.def Info: sign.png used on input line 468.
+Package pdftex.def Info: sign.png used on input line 670.
 (pdftex.def)             Requested size: 861.2154pt x 199.74576pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 468--468
+Underfull \hbox (badness 10000) in paragraph at lines 670--670
 
  []
 
@@ -896,142 +896,162 @@ Overfull \hbox (5.54161pt too wide) in paragraph at lines 1--1
 
  []
 
-)
+
+Overfull \hbox (1.86444pt too wide) in paragraph at lines 11--11
+ [][] \OT1/cmr/m/n/12 Ta-ble  []Single Fea-ture SVM with $10$-fold Cross-Valida
+tion 
+ []
+
+
+Overfull \hbox (1.86444pt too wide) in paragraph at lines 12--12
+ [][] \OT1/cmr/m/n/12 Ta-ble  []Single Fea-ture SVM with $10$-fold Cross-Valida
+tion 
+ []
+
+[4])
 \tf@lof=\write4
- [4] [5] [1] [2] [3] [4]
-<findings/speechmusic.png, id=44, 578.16pt x 433.62pt>
+ [5] [6] [1] [2] [3] [4]
+<findings/speechmusic.png, id=47, 578.16pt x 433.62pt>
 File: findings/speechmusic.png Graphic file (type png)
 
 <use findings/speechmusic.png>
-Package pdftex.def Info: findings/speechmusic.png used on input line 472.
+Package pdftex.def Info: findings/speechmusic.png used on input line 674.
 (pdftex.def)             Requested size: 578.15858pt x 433.61894pt.
 
-Overfull \hbox (7.22424pt too wide) in paragraph at lines 472--472
+Overfull \hbox (7.22424pt too wide) in paragraph at lines 674--674
  [][] 
  []
 
-<findings/speechzoomed.png, id=45, 578.16pt x 433.62pt>
+<findings/speechzoomed.png, id=48, 578.16pt x 433.62pt>
 File: findings/speechzoomed.png Graphic file (type png)
 
 <use findings/speechzoomed.png>
-Package pdftex.def Info: findings/speechzoomed.png used on input line 472.
+Package pdftex.def Info: findings/speechzoomed.png used on input line 674.
 (pdftex.def)             Requested size: 578.15858pt x 433.61894pt.
 
-Overfull \hbox (7.22424pt too wide) in paragraph at lines 472--472
+Overfull \hbox (7.22424pt too wide) in paragraph at lines 674--674
  [][] 
  []
 
 [5] [6 <T:/GitProjects/pd2report/findings/speechmusic.png>] [7 <T:/GitProjects/
 pd2report/findings/speechzoomed.png>] [8]
-<findings/melscale.png, id=60, 578.16pt x 433.62pt>
+<findings/melscale.png, id=63, 578.16pt x 433.62pt>
 File: findings/melscale.png Graphic file (type png)
 
 <use findings/melscale.png>
-Package pdftex.def Info: findings/melscale.png used on input line 472.
+Package pdftex.def Info: findings/melscale.png used on input line 674.
 (pdftex.def)             Requested size: 578.15858pt x 433.61894pt.
 
-Overfull \hbox (7.22424pt too wide) in paragraph at lines 472--472
+Overfull \hbox (7.22424pt too wide) in paragraph at lines 674--674
  [][] 
  []
 
-<findings/windowing.png, id=61, 578.16pt x 433.62pt>
+<findings/windowing.png, id=64, 578.16pt x 433.62pt>
 File: findings/windowing.png Graphic file (type png)
 
 <use findings/windowing.png>
-Package pdftex.def Info: findings/windowing.png used on input line 472.
+Package pdftex.def Info: findings/windowing.png used on input line 674.
 (pdftex.def)             Requested size: 578.15858pt x 433.61894pt.
 
-Overfull \hbox (7.22424pt too wide) in paragraph at lines 472--472
+Overfull \hbox (7.22424pt too wide) in paragraph at lines 674--674
  [][] 
  []
 
 [9] [10 <T:/GitProjects/pd2report/findings/melscale.png>] [11 <T:/GitProjects/p
 d2report/findings/windowing.png>] [12] [13]
-Overfull \hbox (18.52179pt too wide) in paragraph at lines 472--472
+Overfull \hbox (18.52179pt too wide) in paragraph at lines 674--674
 \OT1/cmr/m/n/12 Nonetheless re-search sug-gests that the hu-man brain de-ter-mi
 nes what phonemes
  []
 
 [14]
-Overfull \hbox (16.23228pt too wide) in paragraph at lines 472--472
+Overfull \hbox (16.23228pt too wide) in paragraph at lines 674--674
 [][] 
  []
 
-[15] [16] [17] <findings/recurrence.png, id=95, 455.45157pt x 657.95813pt>
+[15] [16] [17] <findings/recurrence.png, id=98, 455.45157pt x 657.95813pt>
 File: findings/recurrence.png Graphic file (type png)
 
 <use findings/recurrence.png>
-Package pdftex.def Info: findings/recurrence.png used on input line 472.
+Package pdftex.def Info: findings/recurrence.png used on input line 674.
 (pdftex.def)             Requested size: 455.45045pt x 657.95653pt.
  [18] [19 <T:/GitProjects/pd2report/findings/recurrence.png>] <findings/bbmcalc
-.png, id=103, 1260.71pt x 1917.564pt>
+.png, id=106, 1260.71pt x 1917.564pt>
 File: findings/bbmcalc.png Graphic file (type png)
 
 <use findings/bbmcalc.png>
-Package pdftex.def Info: findings/bbmcalc.png used on input line 472.
+Package pdftex.def Info: findings/bbmcalc.png used on input line 674.
 (pdftex.def)             Requested size: 1260.70694pt x 1917.55933pt.
 
-
-LaTeX Warning: Float too large for page by 24.61365pt on input line 472.
-
-<findings/aggbpm.png, id=104, 652.036pt x 491.436pt>
+<findings/aggbpm.png, id=107, 652.036pt x 491.436pt>
 File: findings/aggbpm.png Graphic file (type png)
  <use findings/aggbpm.png>
-Package pdftex.def Info: findings/aggbpm.png used on input line 472.
+Package pdftex.def Info: findings/aggbpm.png used on input line 674.
 (pdftex.def)             Requested size: 652.03441pt x 491.4348pt.
 
-[20] [21 <T:/GitProjects/pd2report/findings/bbmcalc.png>] [22 <T:/GitProjects/p
-d2report/findings/aggbpm.png>] [23]
-Underfull \hbox (badness 10000) in paragraph at lines 473--474
+[20] [21 <T:/GitProjects/pd2report/findings/bbmcalc.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 674--674
+
+ []
+
+[22 <T:/GitProjects/pd2report/findings/aggbpm.png>]
+<findings/svmvisual.png, id=119, 642.4pt x 920.238pt>
+File: findings/svmvisual.png Graphic file (type png)
+
+<use findings/svmvisual.png>
+Package pdftex.def Info: findings/svmvisual.png used on input line 674.
+(pdftex.def)             Requested size: 642.39844pt x 920.23576pt.
+ [23] [24 <T:/GitProjects/pd2report/findings/svmvisual.png>] [25]
+Underfull \hbox (badness 10000) in paragraph at lines 675--676
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 473--474
+Underfull \hbox (badness 10000) in paragraph at lines 675--676
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 473--474
+Underfull \hbox (badness 10000) in paragraph at lines 675--676
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 473--474
+Underfull \hbox (badness 10000) in paragraph at lines 675--676
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 473--474
+Underfull \hbox (badness 10000) in paragraph at lines 675--676
 
  []
 
-[24]
-Underfull \hbox (badness 10000) in paragraph at lines 474--475
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 474--475
+[26] [27] [28] [29] [30]
+Underfull \hbox (badness 10000) in paragraph at lines 676--677
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 474--475
+Underfull \hbox (badness 10000) in paragraph at lines 676--677
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 474--475
+Underfull \hbox (badness 10000) in paragraph at lines 676--677
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 474--475
+Underfull \hbox (badness 10000) in paragraph at lines 676--677
 
  []
 
-[25]
+
+Underfull \hbox (badness 10000) in paragraph at lines 676--677
+
+ []
+
+[31] [32]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
@@ -1042,114 +1062,125 @@ Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--475
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
 []\OT1/cmr/m/n/12 Weisstein, Eric W. Ham-ming Func-tion. From
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--475
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
 \OT1/cmr/m/n/12 MathWorld-A Wol-fram Web Re-source.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--475
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
 []\OT1/cmr/m/n/12 Weisstein, Eric W. Fast Fourier Trans-form.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--475
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
 \OT1/cmr/m/n/12 From MathWorld-A Wol-fram Web Re-source.
  []
 
-[26]
-Underfull \hbox (badness 10000) in paragraph at lines 475--475
+[33]
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
 []\OT1/cmr/m/n/12 Weisstein, Eric W. Dis-crete Fourier Trans-form.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--475
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
 \OT1/cmr/m/n/12 From MathWorld-A Wol-fram Web Re-source.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--475
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
 []\OT1/cmr/m/n/12 Twitter (10 Jan., 2016) Re-trieved 10 Jan., 2016 from
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--475
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
 []\OT1/cmr/m/n/12 Facebook (10 Jan., 2016) Re-trieved 10 Jan., 2016 from
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--475
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
 []\OT1/cmr/m/n/12 Instagram (10 Jan., 2016) Re-trieved 10 Jan., 2016 from
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--475
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
 []\OT1/cmr/m/n/12 Tumblr (10 Jan., 2016) Re-trieved 10 Jan., 2016 from
  []
 
-[27] [28]
-Underfull \hbox (badness 10000) in paragraph at lines 475--475
+[34] [35]
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
 []\OT1/cmr/m/n/12 High Fre-quency Range Test (8-22kHz).
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--475
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
 \OT1/cmr/m/n/12 (n.d.). Re-trieved Jan. 12, 2016 from
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--475
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
 []\OT1/cmr/m/n/12 Weisstein, Eric W. Nyquist Fre-quency. From
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--475
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
 \OT1/cmr/m/n/12 MathWorld-A Wol-fram Web Re-source.
  []
 
 
-Underfull \hbox (badness 1107) in paragraph at lines 475--475
+Underfull \hbox (badness 1107) in paragraph at lines 677--677
 \OT1/cmr/m/n/12 http://mathworld.wolfram.com/NyquistFrequency.html Re-trieved
  []
 
 
-Underfull \hbox (badness 1210) in paragraph at lines 475--475
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+[]\OT1/cmr/m/n/12 Music In-for-ma-tion Re-trieval Eval-u-a-tion eX-change (MIRE
+X)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--677
+\OT1/cmr/m/n/12 Home. Re-trived Jan. 12, 2016 from http://www.music-
+ []
+
+[36]
+Underfull \hbox (badness 1210) in paragraph at lines 677--677
 []\OT1/cmr/m/n/12 Champion, R., Paci, T. & Var-don, J. (2012). PD 2: Crit-i-cal
 
  []
 
 
-Overfull \hbox (50.14111pt too wide) in paragraph at lines 475--475
+Overfull \hbox (50.14111pt too wide) in paragraph at lines 677--677
 \OT1/cmr/m/n/12 https://learn.uwaterloo.ca/d2l/le/content/80224/viewContent/605
 550/View
  []
 
-[29] [30] [31] (T:\GitProjects\pd2report\report.aux) ) 
+[37] [38] (T:\GitProjects\pd2report\report.aux) ) 
 Here is how much of TeX's memory you used:
- 17473 strings out of 493921
- 328473 string characters out of 3150901
- 535691 words of memory out of 3000000
- 20511 multiletter control sequences out of 15000+200000
+ 17485 strings out of 493921
+ 328693 string characters out of 3150901
+ 556995 words of memory out of 3000000
+ 20522 multiletter control sequences out of 15000+200000
  12943 words of font info for 53 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  64i,13n,72p,10427b,967s stack positions out of 5000i,500n,10000p,200000b,50000s
-<T:/Programs/MikTex/fonts
-/type1/public/amsfonts/cm/cmbx12.pfb><T:/Programs/MikTex/fonts/type1/public/ams
-fonts/cm/cmex10.pfb><T:/Programs/MikTex/fonts/type1/public/amsfonts/cm/cmmi12.p
-fb><T:/Programs/MikTex/fonts/type1/public/amsfonts/cm/cmmi6.pfb><T:/Programs/Mi
-kTex/fonts/type1/public/amsfonts/cm/cmmi8.pfb><T:/Programs/MikTex/fonts/type1/p
-ublic/amsfonts/cm/cmr12.pfb><T:/Programs/MikTex/fonts/type1/public/amsfonts/cm/
-cmr8.pfb><T:/Programs/MikTex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><T:/Prog
-rams/MikTex/fonts/type1/public/amsfonts/cm/cmsy8.pfb><T:/Programs/MikTex/fonts/
-type1/public/amsfonts/cm/cmti12.pfb><T:/Programs/MikTex/fonts/type1/public/amsf
-onts/symbols/msbm10.pfb>
-Output written on report.pdf (37 pages, 1925616 bytes).
+<T:/Programs/MikTex/fonts/type
+1/public/amsfonts/cm/cmbx12.pfb><T:/Programs/MikTex/fonts/type1/public/amsfonts
+/cm/cmex10.pfb><T:/Programs/MikTex/fonts/type1/public/amsfonts/cm/cmmi12.pfb><T
+:/Programs/MikTex/fonts/type1/public/amsfonts/cm/cmmi6.pfb><T:/Programs/MikTex/
+fonts/type1/public/amsfonts/cm/cmmi8.pfb><T:/Programs/MikTex/fonts/type1/public
+/amsfonts/cm/cmr12.pfb><T:/Programs/MikTex/fonts/type1/public/amsfonts/cm/cmr8.
+pfb><T:/Programs/MikTex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><T:/Programs/
+MikTex/fonts/type1/public/amsfonts/cm/cmsy8.pfb><T:/Programs/MikTex/fonts/type1
+/public/amsfonts/cm/cmti12.pfb><T:/Programs/MikTex/fonts/type1/public/amsfonts/
+symbols/msbm10.pfb>
+Output written on report.pdf (45 pages, 2005733 bytes).
 PDF statistics:
- 182 PDF objects out of 1000 (max. 8388607)
+ 209 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
