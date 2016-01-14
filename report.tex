@@ -1,6 +1,11 @@
 \documentclass[12pt]{article}
 \usepackage{PDReport}
+\usepackage{mathmacros}
+\usepackage{siunitx}
+\usepackage{xcolor, colortbl}
 \usepackage{lipsum} % remove this
+
+% https://scivision.co/matplotlib-in-cygwin-64-bit/
 
 % My information
 \const{faculty}{Faculty of Physics \& Astronomy}
@@ -17,12 +22,26 @@
 
 % Glosasary
 \makenoidxglossaries
-\newglossaryentry{spriteSheet}
+\newglossaryentry{phoneme}
 {
-  name={Sprite Sheet},
-  text={sprite sheet},
-  description={Sprite Sheets are the tradtional technology used to minimize the number of draw calls. A collection of smaller image files compiled into one large image by third-party software},
-  plural={sprite sheets}
+  name={Phoneme},
+  text={phoneme},
+  description={A term used in the study of linguistics, phonemes are the irreducible sound elements made by speaking. English has 44 phonemes such as /m/ as in \textit{man, summer, palm} or /ow/ in \textit{now, shout, bough}. MFCCs accoustically model these parts of speech. },
+  plural={phonemes}
+}
+\newglossaryentry{feature}
+{
+  name={Feature},
+  text={feature},
+  description={In the domain of machine learning and data science, a feature is the result of performing feature extraction on a data source. Features act as the inputs to a classification or regression model. Deep-learning techniques auto-learn these features. Feature extraction is a form of dimensionality reduction. For example, the average age (the feature) of a soccer team (the data set) is $16$. This reduces the data from $n$ numbers to just $1$.},
+  plural={features}
+}
+\newglossaryentry{cross-validation}
+{
+  name={Cross Validation},
+  text={cross validation},
+  description={A classification model validation technique used to predict how the given model will perform on real-world data. $n$-fold cross validation means take the sample data set of size $N$ and randomly seperate it into $n$ pieces. Then train the model on each of the $n$ pieces except 1 to test the model with. Record the performance of the model and then repeat for each of the $n$ pieces being the test set. This will minimize errors in the model due to overfitting.},
+  plural={cross validations}
 }
 
 % Title Page (ignore)
@@ -68,12 +87,20 @@
   \pagenumbering{arabic}
   \mySection{Introduction}
   {
-    Sysomos is a Toronto, Ontario based company with secondary offices all across the world. They are a leader in social media management and have over 1000
-    % Social domain/ motivation
-    % Augmenting Social Data (Search/indexing)
-    % Frame recommendation
-    % Speech
-    % Music genre
+    Sysomos is a Toronto, Ontario based company with secondary offices all across the world. They are a leader in social media management and have over 1000 high-profile clients. Their primary business is gathering and collecting data and insights from social media platforms like Twitter \cite{twitter}, Facebook \cite{facebook}, Tumblr \cite{tumblr}, Vine \cite{vine}, and Instagram \cite{instagram}. Their computational resources allow for the ingestion and analysis hundreds of billions of data sources in real-time \cite{sysomos}. Sysomos products give clients an ability to understand and visualize their target demographic/audience for various marketing and public-relations projects.
+
+    The general ambition of the Research Labs team at Sysomos is to examine the corpus of all social media data and try and discover news ways to learn actionable insights that can be beneficial to the core products of the company. Typical \glspl{feature} of social posts that are used to build a story include tweets, photos, comments, friendships and conversations; anything that can be found online.
+
+    One of the projects that I was fortunate enough to lay foundations for was our audio analysis project. Essentially, the project involved tackling the question: \textit{How can we utilize the audio channel of social media videos to augment the existing data?} Augmenting data it universally useful for Sysomos products as it allows for better indexing for searchability as well as gives Sysomos an extra data stream they and similar companies in the industry have yet to tap into.
+
+    Early on, the composite problems were identified as follows:
+    \begin{enumerate}
+      \item Perform automatic speech recognition (ASR) on the audio in order to extract phrases spoken by individuals.
+      \item Determine what music/music genres individuals are interested in for marketing purposes.
+      \item Predict which video frames are most interesting/characteristic of the entire video so that image analytics can be performed efficiently.
+    \end{enumerate}
+
+    This report outlines and analyzes some of the work done to tackle these problems. It focuses on acoustic modelling through the use of audio \glspl{feature} called Mel-Frequency Cepstral Coefficients (MFCCs).
   }
   \newpage
 }
@@ -105,9 +132,12 @@
       ...
     }
     \mySubSection{Normalizing Signal}{
-      ...
+      In the context of sound as a continous pressure wave \cite{sound}, the \textit{intensity} of a sound wave is a continous pressure signature $x(t)$ (where $t$ is time and $x$ is the relative measure of the displacement of a speaker or microphone diaphram). In order to digitalize the signal, it is typically sampled around $\SI{44.1}{\kilo\hertz}$. This is the Nyquist frequency \cite{nyquist} corresponding to twice the maximum human hearing frequency of around $\SI{20}{\kilo\hertz}$ \cite{humanhearing}. Also typically, an audio signal is broken into two channels; one intended for the right ear and one for the left $\vec{x}[t] = \br{x_L[t], x_R[t]}$. Furthermore, the value encoded for the intensity is always a $b$-bit integer. In order to normalize for all different bitrates, one must take the average of the two channels, and divide by the maximum intensity. Namely,
+      \[ x[t] \defined \f{x_L[t] + x_R[t]}{2\cdot2^{b-1}} \numberthis \label{eq:normalizedsignal}\]
+      Henceforth, \eqref{eq:normalizedsignal} will be considered the audio signal to be analyzed. All that remains to be normalized for is the sampling rate $f$ of the signal.
     }
-    \mySubSection{Classification}{
+    \mySubSection{High Level Classification}{
+      \label{sec:highlevelclassification}
       ...
     }
     \mySubSection{Augment Data \& Frame Recommendations}{
@@ -116,46 +146,202 @@
   }
 
   \mySection{Mel-Frequency Cepstral Coefficients Disected}{
-    ...
+    \label{sec:MFCCs}
+    Mel-Frequency Cepstral Coefficients (MFCCs), developed in 1974 by Bridle, Brown and Mermelstein \cite{MFCCfoundation1,MFCCfoundation2,MFCCfoundation3}, are a vector of real-values features that correspond to a short window of time within an audio signal. They are a respresentation of the components of the audio signal that correspond to the unique \textit{\gls{phoneme}} being spoken by the speaker. What follows is a detailed exposition on how MFCCs are calculated. This is done to accomplish two things. Firstly, to outline how to implement MFCCs and identify areas that can be explored for further improvement. Secondly, this section aims to convince the reader that MFCCs are well-motivated in their construction for acoustic-speech modelling. A quantitative analysis of their importance will follow in section \ref{sec:performanceevaluation}.
+
+    \myFigure{0.7}{findings/speechmusic.png}{Comparison between speech (woman speaking) and music (classical) waveforms and spectrograms. Taken from the Marsyas ``Music Speech'' database. \cite{marsyas} \label{fig:speechmusic}}
+
+    \myFigure{0.7}{findings/speechzoomed.png}{A Zoomed in portion of figure \ref{fig:speechmusic}. MFCCs characterize the periodicity of the spectrum across short durations of time. The outlined interval represents a window $w$ that is being considered. \label{fig:specband}}
     \mySubSection{Windowing}{
-      ...
+      Since MFCCs model the \glspl{phoneme} spoken by individuals, the total audio signal $x[t]$ given by \eqref{eq:normalizedsignal} needs to be divided up into shorter intervals of time. Typically, \glspl{phoneme} sounds are considered \textit{stationary waves} on the time length less than around $\sim\SI{30}{\milli\second}$ \cite{ms}. This is illustrated in figure \ref{fig:specband}. The spectrogram is approximately constant across this time scale (outlined interval). MFCCs measure the feature of the repeating high-intensity (red) bands; a unique signature exists for each phoneme. A window length of around $1024$ samples is useful for two reasons:
+      \begin{enumerate}
+        \item Powers of $2$ require no padding when taking a Discrete Fourier Transform \cite{fastfourier}.
+        \item At a sampling rate of $\SI{44.1}{\kilo\hertz}$, $1024$ samples corresponds to $\sim\SI{20}{\ms}$ which is completely sufficient for stationary waves.
+      \end{enumerate}
+      An appropriate sample rate should be chosen based off the sampling frequency of the raw signal. Before performing a fast fourier transform on a finite interval of time, an \textit{apodization window function} needs to be applied to minimize leakage artifacts induced by the periodic extension of the signal \cite{dftox}. For the purposes of MFCCs, the popular Hamming Window \cite{hamming} works just fine.
+
+      MFCCs are computed for each window of $1024$ samples. Let $m_{w}^{\br{0}}$ represent the vector of values of sound intensity in window $w$. Also, $(0)$ indicates the zeroth stage of the MFCC computation. Thus $m_{w,j}^{\br{0}}$ are the individual values of intensity $0 \leq j \leq N - 1 = 1023$
     }
     \mySubSection{Discrete Fourier Transform}{
-      ...
+      Next, in order to expose the frequency domain of the short window $w$, perform a real-valued Discrete Fourier Transform \cite{discretefourier}.
+      \[ m_{w,k}^{\br{1}} = \f1N \abs{\sum_{j=0}^{N-1} m_{w,j}^{\br{0}} e^{-2\pi i kj/N}} \quad 0 \leq k \leq N-1 \]
+      Now $m_{w,k}^{\br{1}}$ represents the magnitude of the signal $m_{w}^{\br{0}}$ composed of frequency $\f{k}{N} \cdot f$ (where $f$ is the sampling frequency of the original signal). Note $m^{\br{0}}$ is in the time-domain while $m^{\br{1}}$ is in the frequency domain. Note however that principle, a Fast Fourier Transform is taken in to reduce the time complexity of the computation from $O(N^2)$ to $O(N\log N)$ \cite{fastfourier}.
     }
-    \mySubSection{Triangular Windowing}{
-      ...
-    }
-    \mySubSection{Logarithm of Amplitudes}{
-      ...
+    \myFigure{0.7}{findings/melscale.png}{Mel Scale vs. Hertz Scale \label{fig:melscale}}
+    \myFigure{0.7}{findings/windowing.png}{Triangular Windowing on Frequency Domain\label{fig:triangularwindowing}}
+    \mySubSection{Mel-Scale \& Triangular Windowing}{
+      Now that the frequency domain is revealed by the series, MFCCs shift the standard frequency scale of Hertz to Mels. The Mel frequency scale, introduced in 1937 \cite{melfoundations}, is a logirthmic scale associated with the way humans preceive pitch. At larger frequencies, increasingly large frequency intervals are preceived by humans to be equal pitch increments \cite{melfoundations}. The scale is defined with respect to $1000 \text{mels} = 1000 \text{Hz}$. Figure \ref{fig:melscale} shows this relationship.
+      \[ m = \f{1000}{\log{2}}\log{\br{1+\f{f}{1000}}} \]
+      In order to normalize the signal $m_{w}^{\br{1}}$ further, they are passed through a set of triangular windows. This is illustrated in figure \ref{fig:triangularwindowing}. Letting each triangular window be denoted $T_j$, there are typically a few dozen windows ($N_T$) (leading research indicates 40 is optimal \cite{mirex2015winners}). Thus $j$ is an integer with $0 \leq j \leq N_T - 1 \in Z$. This step in the computation of MFCCs can be expressed in equation \eqref{eq:triangularwindowing}.
+      \[ m_{w,j}^{\br{2}} = \sum_{k=0}^{N-1} T_{j, k} m_{w,k}^{\br{1}} \numberthis \label{eq:triangularwindowing}\]
+      In equation \eqref{eq:triangularwindowing}, $T_{j, k}$ represents the value of triangular window $j$ at the frequency $\f{k}{N} \cdot f$. Thus $m_{w,j}^{\br{2}}$ is the response from window $T_j$ and is still in the frequency domain. Notice in figure \ref{fig:triangularwindowing} that the windows are spaced with their centers spaced in equal intervals on the mel-scale. Thus on the hertz-scale, they appear logarithmically spaced. Furthermore, to normalize the response from each window $T_j$ the height of the triangular is chosen such that all windows have equal area. The width of the window is determined by the neighboring centers. Also note that the windows range from around $\sim 100 - 2500 \text{Hz}$. This range has a lot of freedom but is approximately the range of human voice production \cite{humanvoicerange}.
+      Finally, the logarithm of each $m_{w}^{\br{2}}$ is taken to normalize the difference between the results from each window \cite{computingmfcc}.
+      \[ m_{w}^{\br{3}} = \log\br{m_{w}^{\br{2}}} \]
     }
     \mySubSection{Discrete Cosine Transform}{
-      ...
+      \label{sec:dct}
+      Now that we have a vector, namely $m_{w}^{\br{3}}$, that characterizes the periodic behaviour of the signal in \textit{time} we can explore the periodic nature of the signal in the \textit{frequency} domain. This is the key component that differentiates MFCCs from typical signal analysis features. In order to accomplish this, we can perform yet another discrete fourier transform. However, in principle, only a discrete cosine transform is sufficient because the current signal is real-valued $m_{w}^{\br{3}} \in \R$ and the output is required to be real.
+      \[ m_{w,j}^{\br{4}} = \sum_{j=0}^{N_T-1}m_{w, j}^{\br{3}} \cos\bs{\f{k\br{2j+1}\pi}{2N_T}} \quad 0 \leq k \leq N\tsb{mfcc}-1 < N_T \numberthis \label{eq:dct} \]
+      Performing a discrete cosine transform in equation \eqref{eq:dct} moves $m_{w}^{\br{3}}$ from the frequency domain to $m_{w}^{\br{4}}$ in the \textit{quefrency} domain, which has units of time but is not correlated with the initial time domain. Just as the discrete fourier transform exposed the \textit{spectral} domain of the signal, \eqref{eq:dct} exposes the \textit{cepstral} domain of the signal. It is very important to note that $k$ takes on only $N\tsb{mfcc}$ values. Thus $m_{w}^{\br{4}}$ is a vector of length $N\tsb{mfcc}$. MFCCs act as a low-pass filter on the quefrency domain as only the smallest $N\tsb{mfcc}$ quefrency values are kept. This smooths out the representation of the vector $m_{w}^{\br{3}}$ because it removes high-quefrency noise artifacts. Typically, it is customary to select the first $N\tsb{mfcc} = 13$ cofficients \cite{speakergender,mirex2015winners}.
     }
-    \mySubSection{Interpretation}{
-      ...
+    \mySubSection{Deltas \& Delta-Deltas}{
+      The values obtained in \ref{sec:dct}, namely $m_{w}^{\br{4}}$, are called the \textit{Mel-Frequency Cepstral Coefficients}. They are a vector of $N_T$ real values for a given window $w$ from the original signal $m^{\br{0}}$. For the purposes of the analysis in section \ref{sec:performanceevaluation}, these are considered as the final MFCCs.
+      \[ \text{MFCC}_{w} = m_{w}^{\br{4}} \]
+      Nonetheless research suggests that the human brain determines what phonemes are spoken by context of the sounds produced nearby in time. \cite{temporallearning, temporaldiflearning}. Effectively, the trajectory of the MFCC vector contributes to the cognitive understanding of the spoken sounds. Often it is common to introduce the notion of \textit{deltas} and \textit{delta-deltas}; the discrete velocity and acceleration of the MFCCs respectively.
+      \[ \text{MFCC}_{w} = \bs{m_{w}^{\br{4}}, \Delta m_{w}^{\br{4}}, \Delta^2 m_{w}^{\br{4}}} \]
+      Where $\Delta m_w = m_{w+1} - m_{w-1}$ and $\Delta^2 m_w = \Delta m_{w+1} - \Delta m_{w-1}$ while appropriately handling boundary cases.
     }
-    \mySubSection{Deltas and Delta-Deltas}{
+    \mySubSection{Information Compression}{
       ...
     }
   }
 
   \mySection{Performance Evaluation}{
-    ...
-    \mySubSection{Binary Classification}{
-      ...
-    }
+    \label{sec:performanceevaluation}
+    Section \ref{sec:MFCCs}outlined the motivation for MFCCs from the audial cognitive-psychological perspective as well as how to expose them using spectral and cepstral analysis. This section aims to discuss some of the work done by this project to determine how well MFCCs perform in classification and regression problems compared to other typical features (see section \ref{sec:featurelist}). It will describe the methods used to compare these features and interpret the results of those tests.
+
     \mySubSection{Feature List}{
-      ...
+      \label{sec:featurelist}
+      MFCCs have been shown to perform well in speech recognition tasks. The purpose of this performance evaluation is to compare the performance of MFCCs against a number of other statistical and musical features of audio signals. Table \ref{tbl:features} lists and describes these features. This list is by no means exhaustive, but it aims to give a wide range comparisons. There are $4$ time-based features, $9$ frequency-based features, $12$ musical-based features, and the $13$ MFCCs for a total of $38$ features.
+
+      \definecolor{Gray}{gray}{0.85}
+      \definecolor{LightCyan}{rgb}{0.88,1,1}
+      \begin{table}
+      \label{tbl:features}
+      \caption{Table of features used in performance evaluation tests.}
+      \begin{tabular}{|l|l|l|}
+        \hline
+        \rowcolor{Gray}
+        \textbf{Feature Name} & \textbf{Desciption} \\
+        \hline
+        \rowcolor{LightCyan}
+        \multicolumn{2}{|c|}{Time-Based Features} \\
+        \hline
+        Zero-Crossing Rate & Number of times signal crosses zero  \\
+        & $\text{zcr}\br{x\bs{t}} = \f{1}{N - 1}\sum_{t=1}^{N-1}\mathbb{I}\bc{x\bs{t}x\bs{t-1} < 0}$ \\
+        \hline
+        Energy & Energy of discrete time signal \\
+        & $\text{energy}\br{x\bs{t}} = \f{1}{N}\sum_{t=1}^{N-1}x\bs{t}x^*\bs{t}$ \\
+        \hline
+        Root-Mean Squared & Quadratic mean of signal \\
+        & $\text{rms}\br{x\bs{t}} = \sqrt{\f{1}{N}\sum_{t=1}^{N-1}x^2\bs{t}}$ \\
+        \hline
+        Energy-Entropy & Shannon Entropy of sub-divided windows ($n = 10$) \\
+        & $\text{H}\br{x\bs{t}, n} = - \sum_{i}^{n}\bc{e_i, \ln{e_i}}$ \\
+        & $e_i = x\bs{t} / \text{energy}\br{x_i\bs{t}}$ \\
+        \hline
+        \rowcolor{LightCyan}
+        \multicolumn{2}{|c|}{Frequency-Based Features} \\
+        \hline
+        Spectral Centroid & Center of mass of spectrum (Hz) \\
+        & $\text{centroid}\br{X[n]} = \sum_{n=0}^{N-1}X[n]f(n)/\sum_{n=0}^{N-1}f(n)$ \\
+        \hline
+        Flatness or & $\text{flatness}\br{X[n]} = \exp\br{\f1N\sum_{n=0}^{N-1}\ln X[n]}/\f1N\sum_{n=0}^{N-1}X[n]$ \\
+        Wiener Entropy & \\
+        \hline
+        Spectral Entropy & Energy-entropy of spectrum (see above) \\
+        & $\text{H}\br{X\bs{t}, n} = - \sum_{i}^{n}\bc{e_i, \ln{e_i}}$ \\
+        \hline
+        Spectral Mean & Average of the spectrum (Hz) \\
+        & $\bar{X} = \sum_{n=1}^{N}X[n]$ \\
+        \hline
+        Spectral Variance & Statistical variance \\
+        & $\mathrm{Var} \br{X[n]} = \sum_{n=1}^{N}\br{X[n]-\bar{X}}^2$ \\
+        \hline
+        Spectral Kurtosis & Fourth standardized moment \\
+        & $\text{Kurt} \br{X[n]} = \bar{X}_4/\mathrm{Var} \br{X}^2$ \\
+        \hline
+        Spectral Rolloff & 85\%-percentile of spectral energy \\
+        \hline
+        Spectral Skewness & Measure of left/right skewness\\
+        & $\text{Skew} \br{X[n]} = \bar{X}_3/\mathrm{Var} \br{X}^{\br{3/2}}$ \\
+        \hline
+        Spectral Spread & Variance about spectral centroid (above) \\
+        \hline
+        \rowcolor{LightCyan}
+        \multicolumn{2}{|c|}{Musical Features} \\
+        \hline
+        Chroma Coefficients & Maximum normalized histogram of frequency bins \\
+        & centered around each of the 12 semitones $C, C\#, \ldots, B$ \\
+        \hline
+        \rowcolor{LightCyan}
+        \multicolumn{2}{|c|}{Quefrency-Based Features} \\
+        \hline
+        MFCCs & Mel-Frequency Cepstral Coefficients (see \ref{sec:MFCCs}) \\
+        \hline
+      \end{tabular}
+      \end{table}
     }
     \mySubSection{Feature Aggregration}{
-      ...
-      \mySubSubSection{Beat Extraction}{
-        ...
+      \label{sec:featagg}
+      Initially, the audio is subdivided into windows of size $\sim 10\text{ms}$ and each of the $38$ features outlined in section \ref{sec:featurelist} is computed on those windows. However, in order to perform high-level classification tasks like the seperation of ``music'' and ``speech'' audio clips, the features need to be representative of the \textit{entire} clip, not just the windows. With this as motivation, each of the features per window were aggregated into \textit{second order} features. Firstly, the mean of all the values was taken as one aggregation. Secondly, the variance of the feature values were taken as the second aggregation of features. Finally, two more aggregations were made in order explore the phase space of the feature signal; beats-per-minute (BPM) and a BPM confidence (see section \ref{sec:bpm}). In total each of the $38$ features were aggregated into $4\times 38 + 2 = 154$ second-order features. Note the $+2$ features are an tertiary aggregation on both BPM features.
+      \begin{table}
+        \label{tbl:secondorderfeatures}
+        \begin{center}
+        \caption{Second order features breakdown.}
+        \definecolor{Gray}{gray}{0.85}
+        \begin{tabular}{|c|l|}
+          \hline
+          \rowcolor{Gray}
+          \textbf{Count} & \textbf{Second Order Features} \\
+          \hline
+          38 & Mean of each feature \\
+          \hline
+          38 & Variance of each feature \\
+          \hline
+          38 & Predicted BPM (Beats per minute) on feature \\
+          \hline
+          38 & BPM Confidence on each feature \\
+          \hline
+          1 & Aggregrated expected BPM \\
+          \hline
+          1 & Aggregrated expected BPM confidence \\
+          \hline
+        \end{tabular}
+        \end{center}
+      \end{table}
+    }
+    \mySubSection{Beat Extraction}{
+      \label{sec:bpm}
+      In order to extract some information about the long-term repetition of a value-series, there are a few things that can be done \cite{tempo}. One possibility is constructing recurrence plot (see figure \ref{fig:rplot}). A recurrence plot is essentially an image where the pixel at the $i,j$ coordinate is given by equation \ref{eq:recc}.
+      \[ R\bs{i,j} = \text{sim}\br{x[i], x[j]} \numberthis \label{eq:recc}\]
+      Where the similarity measure is typically distance. Recurrence plots are always symmetric and their visual structure, specifically the diagonal strokes, encode the repetition in the signal $x$. However, as pointed out by \cite{rplot}, contruction and analysis of recurrence plots are highly non-linear; at least $O(n^2)$. Therefore, recurrence plots are not computationally feasible on large scales. \\
+      \myFigure{0.7}{findings/recurrence.png}{\label{fig:rplot}Recurrence plots of differnt audio signals. Taken from \cite{rplot}.}
+      Another very common option are comb-filters \cite{comb}. However, like recurrence plots, comb filters are inherently computationally slow (typically $O(n^2)$). \\
+      As such, a fast, $O(n)$ algorithm was developed as part of this project for BPM prediction. The algorithm is illustrated in figure \ref{fig:bpmcalc}. The core idea of this algorithm is that distances between adjacent peaks should be evening spaced if there is a consistent tempo to the audio signal. For each feature:
+      \begin{enumerate}
+        \item Perform delta peak detection using Eli Billauer's \textit{peakdet} algorithm originally developed for matlab \cite{peakdetect}.
+        \item Ignore all minimums, only look at maximums (red dots in figure).
+        \item Construct a histogram based on the distance between adjacent peaks.
+        \item The predicted BPM is the largest column in histogram.
+        \item The BPM confidence is the ratio of the largest histogram to the total number of data points.
+        \item The aggregate BPM and confidence is given by 4. and 5. on the combined histogram for all features (see figure \ref{fig:aggbpm}).
+      \end{enumerate}
+      \myFigure{0.3}{findings/bbmcalc.png}{\label{fig:bpmcalc}BPM prediction using fast $O(n)$ algorithm.}
+      \myFigure{0.4}{findings/aggbpm.png}{\label{fig:aggbpm}Aggregate BPM historgram.}
+      \mySubSubSection{Issues with BPM Measurements}{
+        When performing beat extraction, it is very crucial to notice that beat extraction is very sensitive to whole ratios of the true BPM value. Intuitively, if every other peak was missed by the algorithm, the predicted BPM would be $\f{1}{2}$ of the actual value (i.e. 160BPM and 80BPM should both be considered ``correct'' because the audio is likely composed of multiple channels of repetition). Furthermore, the sampling rate of the audio signal needed to be much faster than the BPM in order for it to be detected $f >> \text{BPM}$.
+      }
+    }
+    \mySubSection{Binary Classification}{
+      \label{sec:binclass}
+      In order to compare the performance of MFCCs with other features of section \ref{sec:featurelist} a two tier classification task was used. As outlined in section \ref{sec:highlevelclassification}, one of the important aspects of this projects pipeline is a high-level classification of between different audio environments. \\
+      The classification problem proposed and used for the analysis of this report is the seperation of audio clips into two categories: music and speech.
+      \mySubSubSection{Feature Ranking via Single Feature Classification Accuracy}{
+        The first tier of the classification task was construction a support vector machine (SVM) classification model using a radial basis function (RBF). This was done for each of the second order features dicussed in section \ref{sec:featagg} and ranked based off their classification accuracy used $10$-fold \gls{cross-validation}. This allowed for the forward-selection of best, most correlated features to the two classes: music and speech.
+      }
+      \mySubSubSection{Multi-Feature SVM based on Feature Rankings}{
+        After performing these rankings, the top $k$ features were selected and a multi-dimensional SVM model was trained and evaluated using $10$-fold \gls{cross-validation}. The values of $k$ were allowed to vary to examine the covergence of accuracy and the potential for overfitting.
       }
     }
     \mySubSection{Data Sets}{
-      ...
+      The binary classification problem and methodology discussed in section \ref{sec:binclass} i
+      \mySubSubSection{Social Data}{
+        ...
+      }
+      \mySubSubSection{Mirex Data}{
+        ...
+      }
     }
     \mySubSection{Results}{
       ...
@@ -167,34 +353,110 @@
       }
     }
     \mySubSection{Interpretation}{
-      ...
+      ... social is not pure
     }
   }
 }
 
 % Conclusions
 \newcommand{\conclusions}{
-  \section{Conclusions}
-  {
-  \conclusion{Sprite Sheets limit the Features and Development of the Application}{
-  Traditional sprite sheets are limited by the size of spriteSheet the GPU can handle. This indirectly encourages developers to only support specific resolutions, limit user control over graphics, and to reduce the visual complexity of the application to solve this problem.
-  }
+  \section{Conclusions}{
+    \conclusion{MFCCs model human interaction with audio.}{
+      ...
+    }
+    \conclusion{MFCCs have the ability to perform well in non-speech modelling.}{
+      ...
+    }
+    \conclusion{MFCCs are the best features considered for speech modelling.}{
+      ...
+    }
+    \conclusion{Beats extraction is not an effective tool for audio environment classification.}{
+      ...
+    }
   }
 }
 
 % Recommendations
 \newcommand{\recommendations}{
-  \section{Recommendations}
-  {
-  \recommendation{Consider streaming all necessary assets from an external server.}{
-  With dynamic sprite sheets, it is a good practice to store every graphic on an external server that can be downloaded by the application only once and cached. These individual files can be allocated to a dynamic spriteSheet only when needed, reducing memory, and improving performancing.
-  }
+  \section{Recommendations}{
+    \recommendation{Fine-tune free parameters of MFCC computation.}{
+      ...
+    }
+    \recommendation{Build full pipline using complete model.}{
+      ...
+    }
+    \recommendation{Perform scalability analysis on pipeline.}{
+      ...
+    }
+    \recommendation{Explore deep learning techniques to improve feature optimizations.}{
+      ...
+    }
   }
 }
 
 % References
 \newcommand{\references}{
   \makereferences{
+      \bibitem{MFCCfoundation1}
+      P. Mermelstein (1976), Distance measures for speech recognition, psychological and instrumental, in Pattern Recognition and Artificial Intelligence, C. H. Chen, Ed., pp. 374–388. Academic, New York.
+      \bibitem{melfoundations}
+      Stevens, Stanley Smith; Volkmann; John; \& Newman, Edwin B. (1937). A scale for the measurement of the psychological magnitude pitch. Journal of the Acoustical Society of America 8 (3): 185–190.
+      \bibitem{MFCCfoundation2}
+      S.B. Davis, and P. Mermelstein (1980), Comparison of Parametric Representations for Monosyllabic Word Recognition in Continuously Spoken Sentences, in IEEE Transactions on Acoustics, Speech, and Signal Processing, 28(4), pp. 357–366.
+      \bibitem{MFCCfoundation3}
+      J. S. Bridle and M. D. Brown (1974), An Experimental Automatic Word-Recognition System, JSRU Report No. 1003, Joint Speech Research Unit, Ruislip, England.
+      \bibitem{hamming}
+      Weisstein, Eric W. Hamming Function. From MathWorld-A Wolfram Web Resource. http://mathworld.wolfram.com/HammingFunction.html
+      \bibitem{ms}
+      W. Labov and M. Baranowski (8 Nov., 2004) 50 msec, submitted to Language Variation and Change. University of Pennylvannia.
+      \bibitem{fastfourier}
+      Weisstein, Eric W. Fast Fourier Transform. From MathWorld-A Wolfram Web Resource. http://mathworld.wolfram.com/FastFourierTransform.html
+      \bibitem{marsyas}
+      Data Sets \- Music Speech. (n.d.). Marsyas \- Music Analysis, Retrieval and Synthesis For Audio Signals. Retrieved Jan., 12, 2016, from http://marsyasweb.appspot.com/download/data\_sets/
+      \bibitem{discretefourier}
+      Weisstein, Eric W. Discrete Fourier Transform. From MathWorld-A Wolfram Web Resource. http://mathworld.wolfram.com/DiscreteFourierTransform.html
+      \bibitem{sysomos}
+      Sysomos: Social Media Monitoring Tools (10 Jan., 2016) Retrieved 10 Jan., 2016 from https://sysomos.com/
+      \bibitem{dftox}
+      The Discrete Fourier Transform. (n.d.). Retrieved Jan., 13, 2016, from http://www.robots.ox.ac.uk/~sjrob/Teaching/SP/l7.pdf
+      \bibitem{twitter}
+      Twitter (10 Jan., 2016) Retrieved 10 Jan., 2016 from https://twitter.com/
+      \bibitem{facebook}
+      Facebook (10 Jan., 2016) Retrieved 10 Jan., 2016 from https://www.facebook.com/
+      \bibitem{vine}
+      Vine (10 Jan., 2016) Retrieved 10 Jan., 2016 from https://vine.co/
+      \bibitem{instagram}
+      Instagram (10 Jan., 2016) Retrieved 10 Jan., 2016 from https://www.instagram.com/?hl=en
+      \bibitem{tumblr}
+      Tumblr (10 Jan., 2016) Retrieved 10 Jan., 2016 from https://www.tumblr.com/
+      \bibitem{peakdetect}
+      E. Billauer. peakdet: Peak detection using MATLAB (2012) Retrived from http://billauer.co.il/peakdet.html
+      \bibitem{ftest}
+      F Statistic: Definition and How to find it. Statistics How To (n.d.). Retrieved Jan., 13th, 2016 from http://www.statisticshowto.com/f-statistic/
+      \bibitem{sound}
+      Feynman, R., \& Leighton, R. (1963). Sound. The wave equation. In The Feynman lectures on physics (New Millennium ed., Vol. 3). Reading, Mass.: Addison-Wesley Pub.
+      \bibitem{humanvoicerange}
+      Baken, R. J. (1987). Clinical Measurement of Speech and Voice. London: Taylor and Francis Ltd. (pp. 177)
+      \bibitem{comb}
+      B. A. Hutchins, Jr. and W. H. Ku. An Adapting Delay Comb Filter for the Resotration of Audio Signals Badly Corrupted with a Periodic Signal of Slowing Changing Frequency. Cornell University, School of Electrical Engineering.
+      \bibitem{rplot}
+      L. Zhang, C. Bao, X. Liu. Audio Classification Algorithm Based on Nonlinear Chracteristics Analysis. Speech and Audio Signal Processing Laboratory, Beijing University of Technology, Beijing.
+      \bibitem{tempo}
+      E. D. Scheirer. Tempo and Beat Analysis of Musical Signals. (n.d.). Machine Listening Group, MIT Media Laboratory.
+      \bibitem{computingmfcc}
+      S. Molau, M. Pitz, R. Schluter, and H. Ney. Computing Mel-Frequency Cepstral Coefficients On The Power Spectrum. (n.d.). Computer Science Department, University of Technology, Germany
+      \bibitem{humanhearing}
+      High Frequency Range Test (8-22kHz). (n.d.). Retrieved Jan. 12, 2016 from http://www.audiocheck.net/audiotests\_frequencycheckhigh.php
+      \bibitem{nyquist}
+      Weisstein, Eric W. Nyquist Frequency. From MathWorld-A Wolfram Web Resource. http://mathworld.wolfram.com/NyquistFrequency.html Retrieved 10 Jan., 2016
+      \bibitem{speakergender}
+      Z. Ma, E. Fokoue. Speaker Gender Recognition via MFCCs and SVMs. (2013) Center for Quality and Applied Statistics.
+      \bibitem{temporallearning}
+      S. Renals, M. Hocbberg, and T. Robinson. Learning Temporal Dependencies in Connectionist Speech Recognition. Cambridge University Engineering Department
+      \bibitem{temporaldiflearning}
+      R. S. Sutton, A. G. Barto: Reinforcement Learning: An Introduction. MIT Press, 1998.
+      \bibitem{mirex2015winners}
+      V. Ghodasara, D. S. Naser, S. Waldekar, G. Saha. Speech/Music Classification Using Block Based MFCC Features. (2015) Electronics \& Electrical Communication Engineering Department, Indian Institute of Technology Kharaqpur, India.
       \bibitem{labelName}
       Champion, R., Paci, T. \& Vardon, J. (2012). PD 2: Critical Reflection and Report Writing. Retrieved 1 March, 2012 from https://learn.uwaterloo.ca/d2l/le/content/80224/viewContent/605550/View
       \textbf{Note:} \cite{labelName} was referenced to format this report.

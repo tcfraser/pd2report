@@ -1,1 +1,10 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces Comparison between speech (woman speaking) and music (classical) waveforms and spectrograms. Taken from the Marsyas ``Music Speech'' database. \cite {marsyas} }}{6}
+\contentsline {figure}{\numberline {2}{\ignorespaces A Zoomed in portion of figure 1\hbox {}. MFCCs characterize the periodicity of the spectrum across short durations of time. The outlined interval represents a window $w$ that is being considered. }}{7}
+\contentsline {figure}{\numberline {3}{\ignorespaces Mel Scale vs. Hertz Scale }}{10}
+\contentsline {figure}{\numberline {4}{\ignorespaces Triangular Windowing on Frequency Domain}}{11}
+\contentsline {table}{\numberline {1}{\ignorespaces Table of features used in performance evaluation tests.}}{16}
+\contentsline {table}{\numberline {2}{\ignorespaces Second order features breakdown.}}{17}
+\contentsline {figure}{\numberline {5}{\ignorespaces Recurrence plots of differnt audio signals. Taken from \cite {rplot}.}}{19}
+\contentsline {figure}{\numberline {6}{\ignorespaces BPM prediction using fast $O(n)$ algorithm.}}{21}
+\contentsline {figure}{\numberline {7}{\ignorespaces Aggregate BPM historgram.}}{22}
 \contentsfinish 
