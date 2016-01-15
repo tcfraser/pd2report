@@ -26,9 +26,10 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Social Data is Not Academic Data}{3}}
 \citation{asr}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Automatic Speech Recognition}{4}}
+\newlabel{sec:asr}{{2.2}{4}}
 \citation{apigoogle}
 \citation{apiwit}
-\citation{ibmwatson}
+\citation{apiibm}
 \citation{apiatt}
 \citation{pacjulius}
 \citation{paccmu}
@@ -41,22 +42,24 @@
 \citation{ffmpeg}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Solution Exploration}{5}}
 \newlabel{sec:solutionexploration}{{2.3}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.0 }Proposed Pipeline}{5}}
 \citation{sound}
 \citation{nyquist}
 \citation{humanhearing}
-\@writefile{toc}{\contentsline {section}{\numberline {3.0 }Proposed Pipeline}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Normalizing Signal}{6}}
+\newlabel{eq:normalizedsignal}{{{1}}{6}}
 \citation{MFCCfoundation1}
 \citation{MFCCfoundation2}
 \citation{MFCCfoundation3}
 \citation{marsyas}
 \citation{marsyas}
 \citation{ms}
-\newlabel{eq:normalizedsignal}{{{1}}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}High-Level Classification}{7}}
 \newlabel{sec:highlevelclassification}{{3.2}{7}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.0 }Mel-Frequency Cepstral Coefficients Disected}{7}}
 \newlabel{sec:MFCCs}{{4.0 }{7}}
+\@gls@reference{main}{phoneme}{\glsnoidxdisplayloc{}{page}{glsnumberformat}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Windowing}{7}}
 \@gls@reference{main}{phoneme}{\glsnoidxdisplayloc{}{page}{glsnumberformat}{7}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Comparison between speech (woman speaking) and music (classical) waveforms and spectrograms. Taken from the MARSYAS ``Music Speech'' database. \cite  {marsyas} }}{8}}
 \newlabel{fig:speechmusic}{{1}{8}}
@@ -65,20 +68,17 @@
 \citation{fastfourier}
 \citation{dftox}
 \citation{hamming}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Windowing}{10}}
-\@gls@reference{main}{phoneme}{\glsnoidxdisplayloc{}{page}{glsnumberformat}{7}}
-\@gls@reference{main}{phoneme}{\glsnoidxdisplayloc{}{page}{glsnumberformat}{7}}
 \citation{discretefourier}
 \citation{fastfourier}
 \citation{melfoundations}
 \citation{melfoundations}
+\citation{mirex2015winners}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Discrete Fourier Transform}{11}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Mel-Scale \& Triangular Windowing}{11}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Mel Scale vs. Hertz Scale }}{12}}
 \newlabel{fig:melscale}{{3}{12}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Triangular Windowing on Frequency Domain}}{13}}
 \newlabel{fig:triangularwindowing}{{4}{13}}
-\citation{mirex2015winners}
 \citation{humanvoicerange}
 \citation{computingmfcc}
 \newlabel{eq:triangularwindowing}{{{2}}{14}}
@@ -90,81 +90,80 @@
 \citation{temporallearning}
 \citation{temporaldiflearning}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Deltas \& Delta-Deltas}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Information Compression}{17}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.0 }Performance Evaluation}{17}}
-\newlabel{sec:performanceevaluation}{{5.0 }{17}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.0 }Performance Evaluation}{16}}
+\newlabel{sec:performanceevaluation}{{5.0 }{16}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Feature List}{17}}
 \newlabel{sec:featurelist}{{5.1}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Feature Aggregration}{17}}
+\newlabel{sec:featagg}{{5.2}{17}}
 \newlabel{tab:features}{{5.1}{18}}
 \@writefile{lof}{\contentsline {table}{\numberline {1}{\ignorespaces Table of features used in performance evaluation tests.}}{18}}
 \citation{tempo}
-\newlabel{tab:secondorderfeatures}{{5.2}{19}}
-\@writefile{lof}{\contentsline {table}{\numberline {2}{\ignorespaces Second order features breakdown.}}{19}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Feature Aggregration}{19}}
-\newlabel{sec:featagg}{{5.2}{19}}
 \citation{rplot}
 \citation{rplot}
 \citation{comb}
+\newlabel{tab:secondorderfeatures}{{5.2}{19}}
+\@writefile{lof}{\contentsline {table}{\numberline {2}{\ignorespaces Second order features breakdown.}}{19}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Beat Extraction}{19}}
+\newlabel{sec:bpm}{{5.3}{19}}
+\newlabel{eq:recc}{{{4}}{19}}
 \citation{peakdetect}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Beat Extraction}{20}}
-\newlabel{sec:bpm}{{5.3}{20}}
-\newlabel{eq:recc}{{{4}}{20}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Recurrence plots of differnt audio signals. Taken from \cite  {rplot}.}}{21}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Recurrence plots of different audio signals. Taken from \cite  {rplot}.}}{21}}
 \newlabel{fig:rplot}{{5}{21}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1}Issues with BPM Measurements}{22}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces BPM prediction using fast $O(n)$ algorithm.}}{23}}
-\newlabel{fig:bpmcalc}{{6}{23}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Aggregate BPM historgram.}}{24}}
-\newlabel{fig:aggbpm}{{7}{24}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces BPM prediction using fast $O(n)$ algorithm.}}{22}}
+\newlabel{fig:bpmcalc}{{6}{22}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Aggregate BPM histogram.}}{23}}
+\newlabel{fig:aggbpm}{{7}{23}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1}Issues with BPM Measurements}{23}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Binary Classification}{24}}
 \newlabel{sec:binclass}{{5.4}{24}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1}Feature Ranking via Single Feature Classification Accuracy}{24}}
 \@gls@reference{main}{cross-validation}{\glsnoidxdisplayloc{}{page}{glsnumberformat}{24}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.2}Multi-Feature SVM based on Feature Rankings}{25}}
-\@gls@reference{main}{cross-validation}{\glsnoidxdisplayloc{}{page}{glsnumberformat}{25}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.2}Multi-Feature SVM based on Feature Rankings}{24}}
+\@gls@reference{main}{cross-validation}{\glsnoidxdisplayloc{}{page}{glsnumberformat}{24}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Data Sets}{25}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.5.1}Social Data}{25}}
+\newlabel{sec:socialdataset}{{5.5.1}{25}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Two Example SVMs with RBF performed on the MIREX data set. Red = Music; Blue = Speech }}{26}}
 \newlabel{fig:svmvisual}{{8}{26}}
 \citation{mirexhome}
 \citation{marsyas}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Data Sets}{27}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.5.1}Social Data}{27}}
-\newlabel{sec:socialdataset}{{5.5.1}{27}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.5.2}MIREX Data}{28}}
-\newlabel{sec:mirexdataset}{{5.5.2}{28}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Results}{28}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.6.1}Feature Rankings}{29}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.6.2}Classification Models}{29}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.7}Interpretation}{29}}
-\newlabel{sec:interp}{{5.7}{29}}
-\@writefile{lof}{\contentsline {table}{\numberline {3}{\ignorespaces Single Feature SVM with $10$-fold Cross-Validation Rankings for Social Data Set}}{30}}
-\newlabel{tab:sfsvmsocial}{{3}{30}}
-\@writefile{lof}{\contentsline {table}{\numberline {4}{\ignorespaces Single Feature SVM with $10$-fold Cross-Validation Rankings for MIREX Data Set}}{31}}
-\newlabel{tab:sfsvmmirex}{{4}{31}}
-\@writefile{lof}{\contentsline {table}{\numberline {5}{\ignorespaces Precision, Recall and F1-Scores for Social Data Set across 4 SVM - RBF Models}}{32}}
-\newlabel{tab:svmsocial}{{5}{32}}
-\@writefile{lof}{\contentsline {table}{\numberline {6}{\ignorespaces Precision, Recall and F1-Scores for MIREX Data Set across 4 SVM - RBF Models}}{33}}
-\newlabel{tab:svmmirex}{{6}{33}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.7.1}Social vs. MIREX Data Sets}{34}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.5.2}MIREX Data}{27}}
+\newlabel{sec:mirexdataset}{{5.5.2}{27}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Results}{27}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.6.1}Feature Rankings}{28}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.6.2}Classification Models}{28}}
+\@writefile{lof}{\contentsline {table}{\numberline {3}{\ignorespaces Single Feature SVM with $10$-fold Cross-Validation Rankings for Social Data Set}}{29}}
+\newlabel{tab:sfsvmsocial}{{3}{29}}
+\@writefile{lof}{\contentsline {table}{\numberline {4}{\ignorespaces Single Feature SVM with $10$-fold Cross-Validation Rankings for MIREX Data Set}}{30}}
+\newlabel{tab:sfsvmmirex}{{4}{30}}
+\@writefile{lof}{\contentsline {table}{\numberline {5}{\ignorespaces Precision, Recall and F1-Scores for Social Data Set across 4 SVM - RBF Models}}{31}}
+\newlabel{tab:svmsocial}{{5}{31}}
+\@writefile{lof}{\contentsline {table}{\numberline {6}{\ignorespaces Precision, Recall and F1-Scores for MIREX Data Set across 4 SVM - RBF Models}}{32}}
+\newlabel{tab:svmmirex}{{6}{32}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7}Interpretation}{33}}
+\newlabel{sec:interp}{{5.7}{33}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.7.1}Social vs. MIREX Data Sets}{33}}
 \citation{mirexwinnersall}
 \citation{mirexwinners1}
 \citation{mirex2015winners}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.7.2}MFCCs Perform Well}{34}}
 \citation{mirex2015winners}
 \citation{mirexwinnersall}
 \citation{mirexwinners1}
 \citation{mirex2015winners}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.7.2}Mel-Frequency Cepstral Coefficients Perform Well}{35}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.7.3}Comparison to MIREX Winners}{36}}
-\newlabel{sec:comparisonmirex}{{5.7.3}{36}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.7.3}Comparison to MIREX Winners}{35}}
+\newlabel{sec:comparisonmirex}{{5.7.3}{35}}
 \citation{mirex2015winners}
 \citation{mirex2015winners}
 \citation{tempovariation}
+\@writefile{lof}{\contentsline {table}{\numberline {7}{\ignorespaces  Classification accuracy results of 2015 MIREX winners. Taken from \cite  {mirex2015winners}.}}{36}}
+\newlabel{tab:mirexwinners}{{7}{36}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.7.4}Fast Beat Extraction is Terrible}{36}}
 \citation{baseball}
 \citation{baseball}
-\@writefile{lof}{\contentsline {table}{\numberline {7}{\ignorespaces  Classification accuracy results of 2015 MIREX winners. Taken from \cite  {mirex2015winners}.}}{37}}
-\newlabel{tab:mirexwinners}{{7}{37}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.7.4}Fast Beat Extraction is Terrible}{37}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.0 }Conclusions}{39}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.0 }Recommendations}{41}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.0 }Conclusions}{38}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.0 }Recommendations}{40}}
 \bibcite{MFCCfoundation1}{1}
 \bibcite{melfoundations}{2}
 \bibcite{MFCCfoundation2}{3}
@@ -172,7 +171,7 @@
 \bibcite{hamming}{5}
 \bibcite{baseball}{6}
 \bibcite{ms}{7}
-\@writefile{toc}{\contentsline {section}{References}{43}}
+\@writefile{toc}{\contentsline {section}{References}{42}}
 \bibcite{fastfourier}{8}
 \bibcite{marsyas}{9}
 \bibcite{mirexwinnersall}{10}
@@ -190,36 +189,36 @@
 \bibcite{peakdetect}{22}
 \bibcite{pacjulius}{23}
 \bibcite{paccmu}{24}
-\bibcite{packaldi}{24}
-\bibcite{pacdragon}{25}
-\bibcite{ftest}{26}
-\bibcite{sound}{27}
-\bibcite{cap3play}{28}
-\bibcite{capcaption}{29}
-\bibcite{capamara}{30}
-\bibcite{capvoicebase}{31}
-\bibcite{humanvoicerange}{32}
-\bibcite{comb}{33}
-\bibcite{rplot}{34}
-\bibcite{ffmpeg}{35}
-\bibcite{tempo}{36}
-\bibcite{siri}{37}
-\bibcite{computingmfcc}{38}
-\bibcite{sysomosgaze}{39}
-\bibcite{apigoogle}{40}
-\bibcite{apiwit}{41}
-\bibcite{apiatt}{42}
-\bibcite{apiibm}{43}
-\bibcite{humanhearing}{44}
-\bibcite{asr}{45}
-\bibcite{nyquist}{46}
-\bibcite{mirexhome}{47}
-\bibcite{cortana}{48}
-\bibcite{speakergender}{49}
-\bibcite{temporallearning}{50}
-\bibcite{temporaldiflearning}{51}
-\bibcite{mirex2015winners}{52}
-\bibcite{labelName}{53}
+\bibcite{packaldi}{25}
+\bibcite{pacdragon}{26}
+\bibcite{ftest}{27}
+\bibcite{sound}{28}
+\bibcite{cap3play}{29}
+\bibcite{capcaption}{30}
+\bibcite{capamara}{31}
+\bibcite{capvoicebase}{32}
+\bibcite{humanvoicerange}{33}
+\bibcite{comb}{34}
+\bibcite{rplot}{35}
+\bibcite{ffmpeg}{36}
+\bibcite{tempo}{37}
+\bibcite{siri}{38}
+\bibcite{computingmfcc}{39}
+\bibcite{sysomosgaze}{40}
+\bibcite{apigoogle}{41}
+\bibcite{apiwit}{42}
+\bibcite{apiatt}{43}
+\bibcite{apiibm}{44}
+\bibcite{humanhearing}{45}
+\bibcite{asr}{46}
+\bibcite{nyquist}{47}
+\bibcite{mirexhome}{48}
+\bibcite{cortana}{49}
+\bibcite{speakergender}{50}
+\bibcite{temporallearning}{51}
+\bibcite{temporaldiflearning}{52}
+\bibcite{mirex2015winners}{53}
+\bibcite{labelName}{54}
 \citation{labelName}
-\@writefile{toc}{\contentsline {section}{Glossary}{50}}
+\@writefile{toc}{\contentsline {section}{Glossary}{49}}
 \ttl@finishall
