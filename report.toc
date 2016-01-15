@@ -1,7 +1,7 @@
 \ttl@change@i {\@ne }{section}{0pt}{}{\contentsmargin {0pt} \thecontentslabel \enspace }{\contentsmargin {0pt}}{\titlerule *[.5pc]{.}\contentspage }\relax 
 \ttl@change@v {section}{}{}{}\relax 
-\contentsline {section}{List of Tables and Figures}{iii}
-\contentsline {section}{Summary}{iv}
+\contentsline {section}{List of Tables and Figures}{iv}
+\contentsline {section}{Summary}{vi}
 \contentsline {section}{\numberline {2.0 }Introduction}{1}
 \contentsline {section}{\numberline {3.0 }Background}{3}
 \contentsline {subsection}{\numberline {3.1}Social Data is Not Academic Data}{3}
