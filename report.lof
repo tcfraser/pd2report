@@ -1,16 +1,5 @@
-\contentsline {figure}{\numberline {1}{\ignorespaces Comparison between speech (woman speaking) and music (classical) waveforms and spectrograms. Taken from the MARSYAS ``Music Speech'' database. \cite {marsyas} }}{8}
-\contentsline {figure}{\numberline {2}{\ignorespaces Zoomed in portion of figure 1\hbox {}. MFCCs characterize repeating red bands in this figure. }}{9}
-\contentsline {figure}{\numberline {3}{\ignorespaces Mel Scale vs. Hertz Scale }}{12}
-\contentsline {figure}{\numberline {4}{\ignorespaces Triangular Windowing on Frequency Domain}}{13}
-\contentsline {table}{\numberline {1}{\ignorespaces Table of features used in performance evaluation tests.}}{18}
-\contentsline {table}{\numberline {2}{\ignorespaces Second order features breakdown.}}{19}
-\contentsline {figure}{\numberline {5}{\ignorespaces Recurrence plots of different audio signals. Taken from \cite {rplot}.}}{21}
-\contentsline {figure}{\numberline {6}{\ignorespaces BPM prediction using fast $O(n)$ algorithm.}}{22}
-\contentsline {figure}{\numberline {7}{\ignorespaces Aggregate BPM histogram.}}{23}
-\contentsline {figure}{\numberline {8}{\ignorespaces Two Example SVMs with RBF performed on the MIREX data set. Red = Music; Blue = Speech }}{26}
-\contentsline {table}{\numberline {3}{\ignorespaces Single Feature SVM with $10$-fold Cross-Validation Rankings for Social Data Set}}{29}
-\contentsline {table}{\numberline {4}{\ignorespaces Single Feature SVM with $10$-fold Cross-Validation Rankings for MIREX Data Set}}{30}
-\contentsline {table}{\numberline {5}{\ignorespaces Precision, Recall and F1-Scores for Social Data Set across 4 SVM - RBF Models}}{31}
-\contentsline {table}{\numberline {6}{\ignorespaces Precision, Recall and F1-Scores for MIREX Data Set across 4 SVM - RBF Models}}{32}
-\contentsline {table}{\numberline {7}{\ignorespaces Classification accuracy results of 2015 MIREX winners. Taken from \cite {mirex2015winners}.}}{36}
+\contentsline {figure}{\numberline {5}{\ignorespaces Comparison between speech (woman speaking) and music (classical) waveforms and spectrograms. Taken from the MARSYAS ``Music Speech'' database. \cite {marsyas} }}{8}
+\contentsline {figure}{\numberline {6}{\ignorespaces Zoomed in portion of figure \G@refundefinedtrue \text {\normalfont \bfseries ??}\GenericWarning { }{LaTeX Warning: Reference `fig:speechmusic' on page 9 undefined}. MFCCs characterize repeating red bands in this figure. }}{9}
+\contentsline {figure}{\numberline {7}{\ignorespaces Mel Scale vs. Hertz Scale }}{12}
+\contentsline {figure}{\numberline {8}{\ignorespaces Triangular Windowing on Frequency Domain}}{13}
 \contentsfinish 

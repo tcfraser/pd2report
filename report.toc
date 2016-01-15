@@ -1,42 +1,22 @@
 \ttl@change@i {\@ne }{section}{0pt}{}{\contentsmargin {0pt} \thecontentslabel \enspace }{\contentsmargin {0pt}}{\titlerule *[.5pc]{.}\contentspage }\relax 
 \ttl@change@v {section}{}{}{}\relax 
-\contentsline {section}{List of Tables and Figures}{iv}
-\contentsline {section}{Summary}{vi}
-\contentsline {section}{\numberline {1.0 }Introduction}{1}
-\contentsline {section}{\numberline {2.0 }Background}{3}
-\contentsline {subsection}{\numberline {2.1}Social Data is Not Academic Data}{3}
-\contentsline {subsection}{\numberline {2.2}Automatic Speech Recognition}{4}
-\contentsline {subsection}{\numberline {2.3}Solution Exploration}{5}
-\contentsline {section}{\numberline {3.0 }Proposed Pipeline}{5}
-\contentsline {subsection}{\numberline {3.1}Normalizing Signal}{6}
-\contentsline {subsection}{\numberline {3.2}High-Level Classification}{7}
-\contentsline {section}{\numberline {4.0 }Mel-Frequency Cepstral Coefficients Disected}{7}
-\contentsline {subsection}{\numberline {4.1}Windowing}{7}
-\contentsline {subsection}{\numberline {4.2}Discrete Fourier Transform}{11}
-\contentsline {subsection}{\numberline {4.3}Mel-Scale \& Triangular Windowing}{11}
-\contentsline {subsection}{\numberline {4.4}Discrete Cosine Transform}{15}
-\contentsline {subsection}{\numberline {4.5}Deltas \& Delta-Deltas}{16}
-\contentsline {section}{\numberline {5.0 }Performance Evaluation}{16}
-\contentsline {subsection}{\numberline {5.1}Feature List}{17}
-\contentsline {subsection}{\numberline {5.2}Feature Aggregration}{17}
-\contentsline {subsection}{\numberline {5.3}Beat Extraction}{19}
-\contentsline {subsubsection}{\numberline {5.3.1}Issues with BPM Measurements}{23}
-\contentsline {subsection}{\numberline {5.4}Binary Classification}{24}
-\contentsline {subsubsection}{\numberline {5.4.1}Feature Ranking via Single Feature Classification Accuracy}{24}
-\contentsline {subsubsection}{\numberline {5.4.2}Multi-Feature SVM based on Feature Rankings}{24}
-\contentsline {subsection}{\numberline {5.5}Data Sets}{25}
-\contentsline {subsubsection}{\numberline {5.5.1}Social Data}{25}
-\contentsline {subsubsection}{\numberline {5.5.2}MIREX Data}{27}
-\contentsline {subsection}{\numberline {5.6}Results}{27}
-\contentsline {subsubsection}{\numberline {5.6.1}Feature Rankings}{28}
-\contentsline {subsubsection}{\numberline {5.6.2}Classification Models}{28}
-\contentsline {subsection}{\numberline {5.7}Interpretation}{33}
-\contentsline {subsubsection}{\numberline {5.7.1}Social vs. MIREX Data Sets}{33}
-\contentsline {subsubsection}{\numberline {5.7.2}MFCCs Perform Well}{34}
-\contentsline {subsubsection}{\numberline {5.7.3}Comparison to MIREX Winners}{35}
-\contentsline {subsubsection}{\numberline {5.7.4}Fast Beat Extraction is Terrible}{36}
-\contentsline {section}{\numberline {6.0 }Conclusions}{38}
-\contentsline {section}{\numberline {7.0 }Recommendations}{40}
-\contentsline {section}{References}{42}
-\contentsline {section}{Glossary}{49}
+\contentsline {section}{List of Tables and Figures}{iii}
+\contentsline {section}{Summary}{iv}
+\contentsline {section}{\numberline {2.0 }Introduction}{1}
+\contentsline {section}{\numberline {3.0 }Background}{3}
+\contentsline {subsection}{\numberline {3.1}Social Data is Not Academic Data}{3}
+\contentsline {subsection}{\numberline {3.2}Automatic Speech Recognition}{4}
+\contentsline {subsection}{\numberline {3.3}Solution Exploration}{5}
+\contentsline {section}{\numberline {4.0 }Proposed Pipeline}{5}
+\contentsline {subsection}{\numberline {4.1}Normalizing Signal}{6}
+\contentsline {subsection}{\numberline {4.2}High-Level Classification}{7}
+\contentsline {section}{\numberline {5.0 }Mel-Frequency Cepstral Coefficients Disected}{7}
+\contentsline {subsection}{\numberline {5.1}Windowing}{10}
+\contentsline {subsection}{\numberline {5.2}Discrete Fourier Transform}{11}
+\contentsline {subsection}{\numberline {5.3}Mel-Scale \& Triangular Windowing}{11}
+\contentsline {subsection}{\numberline {5.4}Discrete Cosine Transform}{15}
+\contentsline {subsection}{\numberline {5.5}Deltas \& Delta-Deltas}{16}
+\contentsline {section}{\numberline {6.0 }Conclusions}{17}
+\contentsline {section}{\numberline {7.0 }Recommendations}{19}
+\contentsline {section}{References}{21}
 \contentsfinish 

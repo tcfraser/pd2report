@@ -20,30 +20,6 @@
 \const{employer}{Sysomos}
 \const{employerCity}{Toronto, Ontario}
 
-% Glosasary
-\makenoidxglossaries
-\newglossaryentry{phoneme}
-{
-  name={Phoneme},
-  text={phoneme},
-  description={A term used in the study of linguistics, phonemes are the irreducible sound elements made when speaking. English has 44 phonemes such as /m/ as in \textit{man, summer, palm} or /ow/ in \textit{now, shout, bough}. MFCCs acoustically model these parts of speech. },
-  plural={phonemes}
-}
-\newglossaryentry{feature}
-{
-  name={Feature},
-  text={feature},
-  description={In the domain of machine learning and data science, a feature is the result of performing feature extraction on a data source. Features act as the inputs to a classification or regression model. Deep-learning techniques auto-learn these features. Feature extraction is a form of dimensionality reduction. For example, the average age (the feature) of a soccer team (the data set) is $16$. This reduces the data from $n$ numbers to just $1$.},
-  plural={features}
-}
-\newglossaryentry{cross-validation}
-{
-  name={Cross Validation},
-  text={cross validation},
-  description={A classification model validation technique used to predict how the given model will perform on real-world data. $n$-fold cross validation means take the sample data set of size $N$ and randomly seperate it into $n$ pieces. Then train the model on each of the $n$ pieces except 1 to test the model with. Record the performance of the model and then repeat for each of the $n$ pieces being the test set. This will minimize errors in the model due to overfitting.},
-  plural={cross validations}
-}
-
 % Title Page (ignore)
 \newcommand{\createtitlepage} {
   \pagenumbering{roman}
@@ -75,6 +51,7 @@
 \newcommand{\summary}{
   \tocsection{Summary}
   {
+  ...
   }
   \newpage
 }
@@ -90,7 +67,7 @@
   {
     Sysomos is a Toronto based company with secondary offices all across the world. They are a leader in social media management and have over 1000 high-profile clients. Their primary business is gathering and collecting data and actionable insights from social media platforms like Twitter \cite{twitter}, Facebook \cite{facebook}, Tumblr \cite{tumblr}, Vine \cite{vine}, and Instagram \cite{instagram}. Their computational resources allow for the ingestion and analysis hundreds of billions of data sources in real-time \cite{sysomos}. Sysomos products give clients an ability to understand and visualize their target demographic/audience for various marketing and public-relations projects.
 
-    The general ambition of the Research Labs team at Sysomos is to examine the corpus of all social media data and try and discover new ways to uncover information beneficial to the core products of the company. Typical \glspl{feature} of social posts used to build a story include tweets, photos, comments, friendships and conversations; anything that can be found online.
+    The general ambition of the Research Labs team at Sysomos is to examine the corpus of all social media data and try and discover new ways to uncover information beneficial to the core products of the company. Typical features of social posts used to build a story include tweets, photos, comments, friendships and conversations; anything that can be found online.
 
     One of the projects that I was fortunate enough to lay foundations for was our audio analysis project. Quite ambitiously, the project involved tackling the question: \textit{How can we utilize the audio channel of social media videos to augment or enhance the existing data?} Augmenting data is universally useful for Sysomos products as it allows for better indexing and searchability of content. Additionally, extra data bares revenue streams that Sysomos and similar companies in the industry have yet to tap into.
 
@@ -101,7 +78,7 @@
       \item Predict which video frames are most interesting/characteristic of the entire video so that image analytics can be performed efficiently.
     \end{enumerate}
 
-    None of these problems are fully solved by the research conducted in this report. However significant strides are made by tackling an easier problem: \textit{How can we predict whether or not a given video contains music, speech, laughing, cheering, silence, etc?} This categorization indirectly contributes to each of the above three goals. This report focuses on acoustic modelling through the use of audio \glspl{feature} called Mel-Frequency Cepstral Coefficients (MFCCs).
+    None of these problems are fully solved by the research conducted in this report. However significant strides are made by tackling an easier problem: \textit{How can we predict whether or not a given video contains music, speech, laughing, cheering, silence, etc?} This categorization indirectly contributes to each of the above three goals. This report focuses on acoustic modelling through the use of audio features called Mel-Frequency Cepstral Coefficients (MFCCs). It will assume the reader has a basic knowledge of machine learning concepts such as generic classification and regression models, support vector machines, feature extraction, accuracies, precision, recall, F1-scores. A small amount of musical theory is also assumed.
   }
   \newpage
 }
@@ -136,13 +113,13 @@
 
   \mySection{Mel-Frequency Cepstral Coefficients Disected}{
     \label{sec:MFCCs}
-    Mel-Frequency Cepstral Coefficients (MFCCs), developed in 1974 by Bridle, Brown and Mermelstein \cite{MFCCfoundation1,MFCCfoundation2,MFCCfoundation3}, are a vector of real-valued features that correspond to a short window of time within an audio signal. They are a respresentation of the unique \textit{\gls{phoneme}} being spoken during that short window. What follows is a detailed exposition on how MFCCs are calculated. This is done to accomplish two things. Firstly, to outline how to implement MFCCs and identify areas that can be explored for further improvement. Secondly, this section aims to convince the reader that MFCCs are well-motivated in their construction for use in acoustic modelling. A quantitative analysis of their importance will follow in section \ref{sec:performanceevaluation}.
+    Mel-Frequency Cepstral Coefficients (MFCCs), developed in 1974 by Bridle, Brown and Mermelstein \cite{MFCCfoundation1,MFCCfoundation2,MFCCfoundation3}, are a vector of real-valued features that correspond to a short window of time within an audio signal. They are a respresentation of the unique \textit{phoneme}} being spoken during that short window. Phonemes, a term used in the study of linuistics, are the irreducible sound elements made when speaking. English has 44 phonemes such as /m/ as in \textit{man, summer, palm} or /ow/ in \textit{now, shout, bough}. What follows is a detailed exposition on how MFCCs are calculated. This is done to accomplish two things. Firstly, to outline how to implement MFCCs and identify areas that can be explored for further improvement. Secondly, this section aims to convince the reader that MFCCs are well-motivated in their construction for use in acoustic modelling. A quantitative analysis of their importance will follow in section \ref{sec:performanceevaluation}.
 
     \myFigure{0.7}{findings/speechmusic.png}{Comparison between speech (woman speaking) and music (classical) waveforms and spectrograms. Taken from the MARSYAS ``Music Speech'' database. \cite{marsyas} \label{fig:speechmusic}}
 
     \myFigure{0.7}{findings/speechzoomed.png}{Zoomed in portion of figure \ref{fig:speechmusic}. MFCCs characterize repeating red bands in this figure. \label{fig:specband}}
     \mySubSection{Windowing}{
-      Since \glspl{phoneme} spoken are considered \textit{stationary waves} on the time length less than around $\sim\SI{30}{\milli\second}$ \cite{ms}, the total audio signal $x[t]$ given by \eqref{eq:normalizedsignal} needs to be divided up into shorter intervals of time. Notice in figure \ref{fig:specband}, the spectrogram is approximately constant within the outlined interval. MFCCs characterize the structure of repeating high-intensity (red) bands. This structure is unique for each phoneme. An appropriate window size ($N$) should be chosen based off the sampling frequency of the raw signal. Choosing a window length of around $1024$ samples is useful for two reasons:
+      Since phonemes spoken are considered \textit{stationary waves} on the time length less than around $\sim\SI{30}{\milli\second}$ \cite{ms}, the total audio signal $x[t]$ given by \eqref{eq:normalizedsignal} needs to be divided up into shorter intervals of time. Notice in figure \ref{fig:specband}, the spectrogram is approximately constant within the outlined interval. MFCCs characterize the structure of repeating high-intensity (red) bands. This structure is unique for each phoneme. An appropriate window size ($N$) should be chosen based off the sampling frequency of the raw signal. Choosing a window length of around $1024$ samples is useful for two reasons:
       \begin{enumerate}
         \item Powers of $2$ require no padding when taking a Discrete Fourier Transform \cite{fastfourier}.
         \item At a sampling rate of $\SI{44.1}{\kilo\hertz}$, $1024$ samples corresponds to $\sim\SI{20}{\ms}$ which is completely sufficient the time scale considered.
@@ -316,10 +293,10 @@
       In order to compare the performance of MFCCs with other features of section \ref{sec:featurelist} a two tier classification task was used. As outlined in section \ref{sec:highlevelclassification}, one of the important aspects of this projects pipeline is a high-level classification of between different audio environments. \\
       The classification problem proposed and used for the analysis of this report is the seperation of audio clips into two categories: music and speech.
       \mySubSubSection{Feature Ranking via Single Feature Classification Accuracy}{
-        The first tier of the classification task was construction a support vector machine (SVM) classification model using a radial basis function (RBF). This was done for each of the second order features dicussed in section \ref{sec:featagg} and ranked by their $10$-fold \gls{cross-validation}, classification accuracy. This allowed for the forward-selection of best, most correlated features to the two classes: music and speech.
+        The first tier of the classification task was construction a support vector machine (SVM) classification model using a radial basis function (RBF). This was done for each of the second order features dicussed in section \ref{sec:featagg} and ranked by their $10$-fold cross-vaidation, classification accuracy. This allowed for the forward-selection of best, most correlated features to the two classes: music and speech.
       }
       \mySubSubSection{Multi-Feature SVM based on Feature Rankings}{
-        After performing these rankings, the top $k$ features were selected and a multi-dimensional SVM model was trained and evaluated using $10$-fold \gls{cross-validation}. The values of $k$ were allowed to vary to examine the accuracy convergence and signatures of overfitting. Figure \ref{fig:svmvisual} has two examples of a 2d SVM. The $x$ and $y$ axes are two features chosen at random. The figures are intended to illustrate the seperability of the data. Red dots are music clips and blue dots are speech clips. The orange radial line is the RBF decision function generated by training the SVM. \\
+        After performing these rankings, the top $k$ features were selected and a multi-dimensional SVM model was trained and evaluated using $10$-fold cross-vaidation. The values of $k$ were allowed to vary to examine the accuracy convergence and signatures of overfitting. Figure \ref{fig:svmvisual} has two examples of a 2d SVM. The $x$ and $y$ axes are two features chosen at random. The figures are intended to illustrate the seperability of the data. Red dots are music clips and blue dots are speech clips. The orange radial line is the RBF decision function generated by training the SVM. \\
 
         Note: $k$-nearest neighbors models (KNN) and logistic/linear regression models were also performed with very similar results. As such, they have been omitted from this report.
       }
@@ -732,5 +709,4 @@
 \conclusions
 \recommendations
 \references
-\placeglossary
 \end{document}
