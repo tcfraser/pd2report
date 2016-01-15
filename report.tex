@@ -26,7 +26,7 @@
 {
   name={Phoneme},
   text={phoneme},
-  description={A term used in the study of linguistics, phonemes are the irreducible sound elements made by speaking. English has 44 phonemes such as /m/ as in \textit{man, summer, palm} or /ow/ in \textit{now, shout, bough}. MFCCs accoustically model these parts of speech. },
+  description={A term used in the study of linguistics, phonemes are the irreducible sound elements made by speaking. English has 44 phonemes such as /m/ as in \textit{man, summer, palm} or /ow/ in \textit{now, shout, bough}. MFCCs acoustically model these parts of speech. },
   plural={phonemes}
 }
 \newglossaryentry{feature}
@@ -57,11 +57,12 @@
 % Letter of Submittal
 \newcommand{\letterofsubmittal} {
   \waterlooletterofsubmittal
-    {\address}{\city}{\postalCode}{\fullName}{\studentID}
-    {
-    I have prepared the enclosed report ``\reportTitle'' as my \term Work Report for my work term spent at \employer in \employerCity. This is my second work term report. The purpose of this report is to examine the problems associated with a popular technique used in application design known as a spriteSheet. I aim to convince anyone familiar with the ideas discussed to consider the solution I propose to solve these problems. This report uses the techniques I developed while tactling these problems but is targeted at a audience with a wider range of applications.
+    {\address}{\city}{\postalCode}{\fullName}{\studentID}{
+    I have prepared the enclosed report ``\reportTitle'' as my \term Work Report for my work term spent at \employer in \employerCity. This is my fourth work term report.
 
-    \employer is currently working on a multi-platform video game. My supervisor, Elyot Grant, assigned me with overcoming some limitations of graphics API used.
+    The purpose of this report is to summarize the research done by me in order to determine how to be classify audio signals in two categories: music and speech. I aim to convince anyone looking to do human speech-related modelling to consider implementing algorithms to calculate Mel-Frequency Cepstral Coefficients (MFCCs). MFCCs are a form of spectral analysis on spectra themselves and thus the reader should have some experience with mathematical techinques like Fourier Transforms. This report explains MFCCs and motivations for their design in detail.
+
+    \employer is currently a leading provider of social media data analytics for large business clients like Coca-Cola, Adidas, etc.
 
     This report was written entirely by me and has not received any previous academic credit at this or any other institution. I give permission to \employer to keep a copy of this report on file and use it as necessary in the future.
     }
@@ -91,7 +92,7 @@
 
     The general ambition of the Research Labs team at Sysomos is to examine the corpus of all social media data and try and discover news ways to learn actionable insights that can be beneficial to the core products of the company. Typical \glspl{feature} of social posts that are used to build a story include tweets, photos, comments, friendships and conversations; anything that can be found online.
 
-    One of the projects that I was fortunate enough to lay foundations for was our audio analysis project. Essentially, the project involved tackling the question: \textit{How can we utilize the audio channel of social media videos to augment the existing data?} Augmenting data it universally useful for Sysomos products as it allows for better indexing for searchability as well as gives Sysomos an extra data stream they and similar companies in the industry have yet to tap into.
+    One of the projects that I was fortunate enough to lay foundations for was our audio analysis project. Essentially, the project involved tackling the question: \textit{How can we utilize the audio channel of social media videos to augment the existing data?} Augmenting data is universally useful for Sysomos products as it allows for better indexing and searchability of content. Additionally, extra data exposes revenue streams that Sysomos and similar companies in the industry have yet to tap into.
 
     Early on, the composite problems were identified as follows:
     \begin{enumerate}
@@ -100,47 +101,34 @@
       \item Predict which video frames are most interesting/characteristic of the entire video so that image analytics can be performed efficiently.
     \end{enumerate}
 
-    This report outlines and analyzes some of the work done to tackle these problems. It focuses on acoustic modelling through the use of audio \glspl{feature} called Mel-Frequency Cepstral Coefficients (MFCCs).
+    This report outlines and analyzes some of the work done to tackle these problems. None of these problems are fully solved by the research conducted in this report, but significant strides are made indirectly by tackling an easier problem: \textit{How can we predict whether or not a given video contains music, speech, laughing, cheering, silence, etc?} It focuses on acoustic modelling through the use of audio \glspl{feature} called Mel-Frequency Cepstral Coefficients (MFCCs).
   }
   \newpage
 }
 \newcommand{\analysis}{
-  \mySection{Audio Survey}{
-    ...
-    \mySubSection{Social is not Clean}{
-      ...
+  \mySection{Background}{
+    The scope of Sysomos's Audio Analytics project is very large. Processing millions of videos posted to social media services like Twitter, Tumblr, Vine and Instagram is complicated and resource intensive. Sysomos is currently purely analyzing text and relations between users and only newly moved into the domain of image machine learning through the acquisition of Gaze Metrics \cite{sysomosgaze}. In order to expand the domain of data Sysomos has access, the research and labs team at Sysomos and I began doing research in audio analytics in videos posted to social media. The motivation of this project is to expose as much information from the audio signal of the video as possible. Consequently, this project is discarding the visual channel of the video entirely. Research conducted at the Standford University shows promise that deep-learning models that combine both audio and visual modalities of a video perform better at classification tasks \cite{multimodal}; however there techniques are currently beyond the scope of the project.
+    \mySubSection{Social Data is Not Academic Data}{
+      Before going further into the analysis, it is important to recognize the context of social media video. Automatic speech recognition tasks are conducted in scenarios where humans are speaking to a machine. For example: when using an iPhone, you speak to Siri \cite{siri} or on windows 10 you speak to Cortana \cite{cortana}. In either case, the user in question understands that the speech recognition algorithms perform better when speaking clearly and with little to no noise. Social media audio or social audio is not so nice to work with. Often times, there is loud music playing in the background, screaming, numerous speakers, different languages, or speech that is inaudible. Speech recognition performs well in an academic setting where the data sets of speakers are normalized and idealized versions of what might be found on social media. As a result, the task of Automatic Speech Recognition is currently outside the scope of the project, but is intended to be added in the future.
     }
-    \mySubSection{Audio Segmentation \& Environment Detection}{
-      ...
+    \mySubSection{Automatic Speech Recognition}{
+      Although this report will not discuss any results associated with Automatic Speech Recognition (ASR), it is important to understand how acoustic modelling fits into the scope of ASR. Acoustic modelling will prove useful for many other audio classification tasks but is also a core part of and ASR pipeline. There are three main components to a ASR pipeline \cite{asr}. Firstly, the acoustic model takes in the raw audio signal and, loosely speaking, performs dimensionality reduction in order to produce a vector of feature values that characterizes the phonemes (parts of a word) that are being spoken. It should be speaker independent and has no notion of language at this moment. Secondly, a pronounciation model that models how likely certain phonemes are to appear ajacent to one another while someone is speaking and what words groups of phonomes make. Pronounciation models are language dependent and are typically Hidden Markov Models (HMMs). Finally, a language model will model how likely certain words are to appear near each other and constructing phrases from the words generated by the pronounciation model.\\
     }
     \mySubSection{Solution Exploration}{
-      ...
-      % public apis, paid models, captioning services
-    }
-    \mySubSection{Use Acoustic Modelling}{
-      ...
-      % discuss the acoustic modelling, pronounciation modelling, and language modelling
+      \label{sec:solutionexploration}
+      Speech recognition technologies are plentiful. One economic way of improving Sysomos's audio data stream would be to simply utilize another service that does speech recognition automatically. Early explorations into this idea included three ideas. First, use any number of publicly available speech apis, namely Google \cite{apigoogle}, wit.ai \cite{apiwit}, IBM Watson \cite{ibmwatson}, and AT\&T \cite{apiatt}; each of which was concluded to be too limited for the scope of the social audio project. Alternatively, use a lincensed software library built for pronounciation and language modelling to build and train models in-house. Unfortunately, Julius \cite{pacjulius}, CMU Sphinx \cite{paccmu}, Kaldi \cite{packaldi} and Nuance Dragon \cite{pacdragon} were all found to be out of scope or two expensive for social automatic speech recognition. Third and final, there are captioning services like VoiceBase \cite{capvoicebase}, Amara \cite{capamara}, CaptionSync \cite{capcaption} and 3PlayMedia \cite{cap3play} that specialize in captioning large documents by hand. As a result of a failed exploration into existing solution, it was decided that a smaller problem, although equally useful, should be tackled first.
     }
   }
 
   \mySection{Proposed Pipeline}{
-    ...
-    \mySubSection{Video Downloading}{
-      ...
-    }
-    \mySubSection{Audio Extraction}{
-      ...
-    }
+    Upon consideration of the limitations discovered in section \ref{sec:solutionexploration}, a high-level classification needs to occur first. This pipeline is the subject of this report. It is sub-divided into 4 stages. First is to download the videos from it's given social source. Next is to extract the audio from the video file. Before processing the audio signal, the raw audio signal need to be normalized. Finally, the normalized audio signal is passed onto a high-level classification model. Audio extraction is done using the popular cross-platform media manipulation \textit{FFmpeg} \cite{ffmpeg}.
     \mySubSection{Normalizing Signal}{
       In the context of sound as a continous pressure wave \cite{sound}, the \textit{intensity} of a sound wave is a continous pressure signature $x(t)$ (where $t$ is time and $x$ is the relative measure of the displacement of a speaker or microphone diaphram). In order to digitalize the signal, it is typically sampled around $\SI{44.1}{\kilo\hertz}$. This is the Nyquist frequency \cite{nyquist} corresponding to twice the maximum human hearing frequency of around $\SI{20}{\kilo\hertz}$ \cite{humanhearing}. Also typically, an audio signal is broken into two channels; one intended for the right ear and one for the left $\vec{x}[t] = \br{x_L[t], x_R[t]}$. Furthermore, the value encoded for the intensity is always a $b$-bit integer. In order to normalize for all different bitrates, one must take the average of the two channels, and divide by the maximum intensity. Namely,
       \[ x[t] \defined \f{x_L[t] + x_R[t]}{2\cdot2^{b-1}} \numberthis \label{eq:normalizedsignal}\]
       Henceforth, \eqref{eq:normalizedsignal} will be considered the audio signal to be analyzed. All that remains to be normalized for is the sampling rate $f$ of the signal.
     }
-    \mySubSection{High Level Classification}{
+    \mySubSection{High-Level Classification}{
       \label{sec:highlevelclassification}
-      ...
-    }
-    \mySubSection{Augment Data \& Frame Recommendations}{
       ...
     }
   }
@@ -151,7 +139,7 @@
 
     \myFigure{0.7}{findings/speechmusic.png}{Comparison between speech (woman speaking) and music (classical) waveforms and spectrograms. Taken from the MARSYAS ``Music Speech'' database. \cite{marsyas} \label{fig:speechmusic}}
 
-    \myFigure{0.7}{findings/speechzoomed.png}{A Zoomed in portion of figure \ref{fig:speechmusic}. MFCCs characterize the periodicity of the spectrum across short durations of time. The outlined interval represents a window $w$ that is being considered. \label{fig:specband}}
+    \myFigure{0.7}{findings/speechzoomed.png}{Zoomed in portion of figure \ref{fig:speechmusic}. MFCCs characterize repeating red bands in this figure. \label{fig:specband}}
     \mySubSection{Windowing}{
       Since MFCCs model the \glspl{phoneme} spoken by individuals, the total audio signal $x[t]$ given by \eqref{eq:normalizedsignal} needs to be divided up into shorter intervals of time. Typically, \glspl{phoneme} sounds are considered \textit{stationary waves} on the time length less than around $\sim\SI{30}{\milli\second}$ \cite{ms}. This is illustrated in figure \ref{fig:specband}. The spectrogram is approximately constant across this time scale (outlined interval). MFCCs measure the feature of the repeating high-intensity (red) bands; a unique signature exists for each phoneme. A window length of around $1024$ samples is useful for two reasons:
       \begin{enumerate}
@@ -202,12 +190,12 @@
 
     \mySubSection{Feature List}{
       \label{sec:featurelist}
-      MFCCs have been shown to perform well in speech recognition tasks. The purpose of this performance evaluation is to compare the performance of MFCCs against a number of other statistical and musical features of audio signals. Table \ref{tbl:features} lists and describes these features. This list is by no means exhaustive, but it aims to give a wide range comparisons. There are $4$ time-based features, $9$ frequency-based features, $12$ musical-based features, and the $13$ MFCCs for a total of $38$ features.
+      MFCCs have been shown to perform well in speech recognition tasks. The purpose of this performance evaluation is to compare the performance of MFCCs against a number of other statistical and musical features of audio signals. Table \ref{tab:features} lists and describes these features. This list is by no means exhaustive, but it aims to give a wide range comparisons. There are $4$ time-based features, $9$ frequency-based features, $12$ musical-based features, and the $13$ MFCCs for a total of $38$ features.
 
       \definecolor{Gray}{gray}{0.85}
       \definecolor{LightCyan}{rgb}{0.88,1,1}
       \begin{table}
-      \label{tbl:features}
+      \label{tab:features}
       \caption{Table of features used in performance evaluation tests.}
       \vspace{0.05in}
       \begin{tabular}{|l|l|l|}
@@ -277,7 +265,7 @@
       \label{sec:featagg}
       Initially, the audio is subdivided into windows of size $\sim 10\text{ms}$ and each of the $38$ features outlined in section \ref{sec:featurelist} is computed on those windows. However, in order to perform high-level classification tasks like the seperation of ``music'' and ``speech'' audio clips, the features need to be representative of the \textit{entire} clip, not just the windows. With this as motivation, each of the features per window were aggregated into \textit{second order} features. Firstly, the mean of all the values was taken as one aggregation. Secondly, the variance of the feature values were taken as the second aggregation of features. Finally, two more aggregations were made in order explore the phase space of the feature signal; beats-per-minute (BPM) and a BPM confidence (see section \ref{sec:bpm}). In total each of the $38$ features were aggregated into $4\times 38 + 2 = 154$ second-order features. Note the $+2$ features are an tertiary aggregation on both BPM features.
       \begin{table}
-        \label{tbl:secondorderfeatures}
+        \label{tab:secondorderfeatures}
         \begin{center}
         \caption{Second order features breakdown.}
         \vspace{0.05in}
@@ -322,7 +310,7 @@
       \myFigure{0.25}{findings/bbmcalc.png}{\label{fig:bpmcalc}BPM prediction using fast $O(n)$ algorithm.}
       \myFigure{0.4}{findings/aggbpm.png}{\label{fig:aggbpm}Aggregate BPM historgram.}
       \mySubSubSection{Issues with BPM Measurements}{
-        When performing beat extraction, it is very crucial to notice that beat extraction is very sensitive to whole ratios of the true BPM value. Intuitively, if every other peak was missed by the algorithm, the predicted BPM would be $\f{1}{2}$ of the actual value (i.e. 160BPM and 80BPM should both be considered ``correct'' because the audio is likely composed of multiple channels of repetition). Furthermore, the sampling rate of the audio signal needed to be much faster than the BPM in order for it to be detected $f >> \text{BPM}$.
+        When performing beat extraction, it is very crucial to notice that beat extraction is very sensitive to whole ratios of the true BPM value. Intuitively, if every other peak was missed by the algorithm, the predicted BPM would be $\f{1}{2}$ of the actual value (i.e. 160BPM and 80BPM should both be considered ``correct'' because the audio is likely composed of multiple channels of repetition). Furthermore, the sampling rate of the audio signal needed to be much faster than the BPM in order for it to be detected $f >> \text{BPM}$. Moreover, in order to perform a aggregation of each of the histograms accurately, the edges of the bins need to be aligned. For the purpose of this report, the bin width was defaulted to 10BPM aligned to 0BPM.
       }
     }
     \mySubSection{Binary Classification}{
@@ -342,27 +330,36 @@
     \mySubSection{Data Sets}{
       The binary classification problem and methodology discussed in section \ref{sec:binclass} was applied to two independent data sets. One taken from social media, and one taken from the annual Music Information Retrieval Evaluation eXchange (MIREX) contest.
       \mySubSubSection{Social Data}{
+      \label{sec:socialdataset}
         For the social media data set, approximately 2800 of the most popular videos of December 2015 were downloaded from Twitter, Tumblr, Vine and Instagram. These were classified manually by hand into 8 audio classes: cheering, slient, laughter, singing, music, other, talking, and broken\_link. Pruning out the broken links and duplicates, 677 unique videos with average length of 5.44 seconds (totaling $\sim 5$ GB for video and audio) were re\-classified into music and speech (approx. half in each). This data set acts as a small sample of the entire population of video this project targets. It contained numerous of different languages, genres of music and audio environments. Every audio channel was encoded at $\SI{44.1}{\kilo\hertz}$.
       }
       \mySubSubSection{MIREX Data}{
+      \label{sec:mirexdataset}
         The Music Information Retrieval Evaluation eXchange (MIREX) committee holds competitions each year on a variety of topics including music/speech classification and detection \cite{mirexhome}. The second data set considered for this report was the dataset used by that competition. It is the ``Music Speech'' dataset hosted by MARSYAS (Music Analysis, Retrival and Synthesis For Audio Signals) \cite{marsyas}. The MARSYAS data set consists of 120 audio clips each 30 seconds long with 60 belonging to each class. Each audio clip was encoded at $\SI{22.05}{\kilo\hertz}$.
       }
     }
     \mySubSection{Results}{
-      The results of the binary classification problem dictated in section \ref{sec:binclass} are found in this section. An interpretation of the results and their implications will follow in section \ref{sec:interp}.
+      The results of the binary classification problem dictated in section \ref{sec:binclass} are found in this section. An interpretation of the results and their implications will follow in section \ref{sec:interp}.\\
+      Note that the feature names were encoded with suffixes to denote the way they were aggregated. For example:
+      \begin{itemize}
+        \item MFCC\_2\_var: The variance of the 2nd MFCCs out of 13 across all windows of the clip.
+        \item Mean\_mean: The average value of the spectral mean across all windows of the clip.
+        \item Chroma\_0\_bpm: The beats-per-minute (BPM) predicted using the 0th Chroma Coefficient.
+        \item Zero Crossing Rate\_bpm\_ratio: The BPM confidence associated with the BPM prediction while using the zero crossing rate.
+      \end{itemize}
       \mySubSubSection{Feature Rankings}{
-        Tables \ref{tbl:sfsvmsocial} and \ref{tbl:sfsvmmirex} are the single feature SVM classification accuracies after $10$-fold cross-validation on each of the $154$ features.
+        Tables \ref{tab:sfsvmsocial} and \ref{tab:sfsvmmirex} are the single feature SVM classification accuracies after $10$-fold cross-validation on each of the $154$ features.
       }
       \mySubSubSection{Classification Models}{
-        Tables \ref{tbl:svmsocial} and \ref{tbl:svmmirex} are the single feature SVM classification accuracies after $10$-fold cross-validation on each of the $154$ features.
+        Tables \ref{tab:svmsocial} and \ref{tab:svmmirex} are the single feature SVM classification accuracies after $10$-fold cross-validation on each of the $154$ features.
       }
     }
 
         \begin{table}
           \definecolor{Gray}{gray}{0.85}
-          \label{tbl:sfsvmsocial}
           \begin{center}
           \caption{Single Feature SVM with $10$-fold Cross-Validation Rankings for Social Data Set}
+          \label{tab:sfsvmsocial}
           \vspace{0.05in}
           \begin{tabular}{|l|l|l|}
             \hline
@@ -409,9 +406,9 @@
 
       \begin{table}
           \definecolor{Gray}{gray}{0.85}
-          \label{tbl:sfsvmmirex}
           \begin{center}
           \caption{Single Feature SVM with $10$-fold Cross-Validation Rankings for MIREX Data Set}
+          \label{tab:sfsvmmirex}
           \vspace{0.05in}
           \begin{tabular}{|l|l|l|}
             \hline
@@ -460,8 +457,8 @@
 
         \begin{table}
           \definecolor{Gray}{gray}{0.85}
-        \label{tbl:svmsocial}
         \caption{Precision, Recall and F1-Scores for Social Data Set across 4 SVM - RBF Models}
+        \label{tab:svmsocial}
         \begin{center}
         \begin{tabular}{|l|l|l|l|}
         \hline
@@ -507,8 +504,8 @@
 
          \begin{table}
           \definecolor{Gray}{gray}{0.85}
-        \label{tbl:svmmirex}
         \caption{Precision, Recall and F1-Scores for MIREX Data Set across 4 SVM - RBF Models}
+        \label{tab:svmmirex}
         \begin{center}
         \begin{tabular}{|l|l|l|l|}
         \hline
@@ -553,43 +550,60 @@
         \end{table}
     \mySubSection{Interpretation}{
     \label{sec:interp}
-      ... social is not pure
+      In order to digest the results of tables \ref{tab:svmsocial}, \ref{tab:sfsvmsocial}, \ref{tab:sfsvmmirex}, and \ref{tab:svmmirex}, dicussions will be broken into four parts. First, a comparison between the social and MIREX data sets. Second, the success of MFCCs will be revealed and dicussed why that is to be expected. Moreover, the results of table \ref{tab:svmmirex} will be compared to the winners of the 2015 MIREX competition. Finally, the poor performance of the beat extraction will be justified.
+      \mySubSubSection{Social vs. MIREX Data Sets}{
+      At an initial glance at tables \ref{tab:sfsvmsocial} and \ref{tab:sfsvmmirex} is evident that the features considered overall perform much differently at tackling the binary classification problems outlined in section \ref{sec:binclass} on each of the data sets. For the social data set (see table \ref{tab:sfsvmsocial}) the best features were able to perform with classification accuracy of around $\sim 60 - 75 \%$ while for the MIREX data set (see table \ref{tab:sfsvmmirex}) the best features achieved classification accuracies of around $\sim 80 - 93$. This large difference was to be expected. The social data set, described in section \ref{sec:socialdataset}, was composed of 677 videos from all across the internet. Upon listening to a sample of them by hand, one will recognize that these audio channels were not \textit{uniform}. The social data set is real-world data; it is composed of all sorts of noisy signals. Furthermore the videos were manual classified based on the class (speech or music) that it suited best. A large portion of audio clips had both speech and music either at seperate times or at the same time; speech as in someone talking, not singing as part of the music. This analysis outlines a key limitation of performing audio analysis on social media data. Namely, that there is never a clearly defined audio environment and performing high-level audio classification will never be perfect; this type of classification task is too idealized. Nonetheless, a maximum F1-score of 0.77 (table \ref{tab:svmsocial}) is very promising and users of Sysomos products are expected to be understanding of the inherent difficult with performing this classification. The relatively poor classification performance of the social data set is contrasted with tables \ref{tab:svmmirex} and \ref{tab:sfsvmmirex}. A maximum F1-score of 0.95 reveals how much more seperable the MIREX data set is.
+      }
+      \mySubSubSection{Mel-Frequency Cepstral Coefficients Perform Well}{
+      Secondly, \ref{tab:sfsvmmirex} illuminates the success of MFCCs. Out of the top 10 features, 7 are derivate of the first order MFCCs. This means  MFCCs out-perform most other features at audio classification tasks. By admission however, the computation and motivation for MFCCs is much more complicated as outlined in section \ref{sec:MFCCs}. The other features mentioned in section \ref{sec:featurelist} are statistic properties of the signal and have no basis for audio processing. None mimic the way humans perceive and interpret sounds (maybe with exception of Chroma Coefficients). It is important to notice that the top-performing features in table \ref{tab:sfsvmmirex} are all mostly variance aggregations on first order features. This can be explained because the variance of the MFCC series should indicate the dynamic range of phonemes, and by extension, words spoken. The mean of the MFCC series does not characterize changes in speech over time. The result, discovered through programmatic analysis validates the reoccuring use of MFCC variances and standard deviation features by top researchers that win the annual MIREX competition \cite{mirexwinnersall, mirexwinners1, mirex2015winners}.
+      }
+      \mySubSubSection{Comparison to MIREX Winners}{
+      \label{sec:comparisonmirex}
+      The 2015 winners of the music/speech classification task on the MIREX data set was lead by a team at the Institute of Technology Kharaqpur, India \cite{mirex2015winners}. They used the standard deviation of MFCCs taken over blocks (bandwidths) of the audio clip and used Gaussian Mixture Models (GMMs) in order to achieve results results outlined in table \ref{tab:mirexwinners}. In comparison, the Indian team of researchers managed to get classification accuracies around $98.43\%$, whereas this report's methods managed to achieve accuracies of $95\%$. Given that the methods were very similar, how did the winners manage to get such high accuracy? The answer brings to light a very important part of MFCC computation: there are countless \textit{free parameters} associated with the generation of the MFCC values. To list a few: the number of triangular filters \ref{fig:triangularwindowing}, the shape of the filters, the frequency range of the filter banks, the number of coefficients to retain after the discrete cosine transform ($N\tsb{mfcc}$), the window size, the apodization window function, etc. The MFCC computation used in the report was very uneducated. A quick survey of parameters was discovered or well-motivated and no changes were made. The current state-of-the-art research of MFCCs involves determining which free parameters to change in order to optimize the classification accuracy\cite{mirexwinnersall, mirexwinners1, mirex2015winners}. In doing so, researchers learn a lot about the nature of how humans understand speech. Consequently, the classification accuracy can still be improved past the values found in table \ref{tab:svmmirex} with further fine-tuning.
+      }
+      \myTable{0.7}{findings/mirexwinnerstable.png}{\label{tab:mirexwinners} Classification accuracy results of 2015 MIREX winners. Taken from \cite{mirex2015winners}.}
+      \mySubSubSection{Fast Beat Extraction is Terrible}{
+      Careful analysis of tables \ref{tab:sfsvmsocial} and \ref{tab:sfsvmmirex}, particularily the features ranked at the bottom of the tables demonstrates how poorly the beat extraction aggregation features (see section \ref{sec:bpm}) performed. Across both data sets, BPM features are consistently failing to achieve higher than 60\% classification accuracy. These results come somewhat unsuprisingly, as the beat extraction algorithm outlined in section \ref{sec:bpm} was designed to be very fast, at the cost of being an approximation of the true BPM. One explanation of this phenomena could be that the data being considered is of very short time scale (5.5s for social, 30s for mirex). The algorithm is expected to perform better for longer audio signals just by construction. As time progresses, a larger and larger histogram is generated. Alternatively, these results could be indicating that there is no strong correlation between speech, music and extracted beats. However, research suggests this is less likely \cite{tempovariation}. Regardless, further analysis will have to be conducted in order to fully determine if beat extraction has a place in audio environment classification or not. \\
+      Interestingly, in table \ref{tab:sfsvmmirex}, the BPM confidence of the spectral centroid achieved classification accuracy of $72\%$. Research in the automatic excitement detection at baseball games found that the standard deviation of the spectral centroid can classify audio environments as high as $80.1\%$ \cite{baseball}. Under this study, BPM confidence out-performed the standard deviation (variance) aggregation. These results can be qualitatively justified for the context of excitement detection. The strength of the tempo of cheers of an audience at a baseball game might be a better measure of excitement than current research suggests \cite{baseball}.
+      }
     }
   }
 }
 
 % Conclusions
 \newcommand{\conclusions}{
+  \newpage
   \section{Conclusions}{
     \conclusion{MFCCs model human interaction with audio.}{
-      ...
+      MFCCs effectively mimic the human behaviour of listening to speech. They utilize the logirthmic perception of both pitch and loudness, the typical frequency ranges of human speech, and the harmonics generated when humans speak phonemes. This is quantitatively illustrated when variances in MFCC values are used to classify MIREX music/speech data sets to an accuracy of $95\%$.
     }
     \conclusion{MFCCs have the ability to perform well in non-speech modelling.}{
-      ...
+      Typically, MFCCs are used for acoustic modelling of automatic speech recognition tasks. In this study, MFCCs are used to build SVM models of 2 features to achieve near state-of-the-art music/speech classification accuracies, thus justifying their use in other acoustic modelling tasks.
     }
     \conclusion{MFCCs are the best features considered for speech modelling.}{
-      ...
+      When compared against 25 other statistical and musical features of an audio signal in both the time and frequency domains, MFCCs outperform all others with few exceptions. This indicates the MFCCs are the best features to use for acoustic modelling tasks.
     }
     \conclusion{Beats extraction is not an effective tool for audio environment classification.}{
-      ...
+      For both data sets considered, using beat extraction on time-based feature series to generate BPM and BPM confidence features will produce less than ideal results. Few beat extraction features managed to achieve a classification accuracy of more than $60\%$ on music/speech data sets, while some managed to perform worst than random guessing (50\%).
     }
   }
 }
 
 % Recommendations
 \newcommand{\recommendations}{
+  \newpage
   \section{Recommendations}{
     \recommendation{Fine-tune free parameters of MFCC computation.}{
-      ...
+      As outlined in \ref{sec:comparisonmirex}, MFCCs have a lot of free parameters to be chosen at implementation time. Fine-tuning and adjusting these parameters to maximize the performance of MFCCs can produce higher than demonstrated classification accuracies.
     }
     \recommendation{Build full pipline using complete model.}{
-      ...
+      This project demonstrated why MFCCs are both theoretically and experimentally excellent models for speech production and understanding. By using MFCCs as an acoustic model, a full pipeline should be designed to integrate with a language model and pronounciation model in order to perform end-to-end automatic speech recognition and other speech modelling tasks.
     }
     \recommendation{Perform scalability analysis on pipeline.}{
-      ...
+      This report did no analysis or tests of computational scalability. It is possible that although MFCCs are best in an academic setting, their computation is too expensive to be used on a large subset of all social video. Scalability tests should be performed on the proposed pipeline.
     }
     \recommendation{Explore deep learning techniques to improve feature optimizations.}{
-      ...
+      Deep learning techniques, specifically Convolution Neural Networks could potentially expose audio features that could out-perform MFCCs. Exploring existing research into feature learning on audio signals is necessary if $75\%$ accuracy is desired for social audio.
     }
   }
 }
@@ -607,50 +621,94 @@
       J. S. Bridle and M. D. Brown (1974), An Experimental Automatic Word-Recognition System, JSRU Report No. 1003, Joint Speech Research Unit, Ruislip, England.
       \bibitem{hamming}
       Weisstein, Eric W. Hamming Function. From MathWorld-A Wolfram Web Resource. http://mathworld.wolfram.com/HammingFunction.html
+      \bibitem{baseball}
+      H. Boril, A. Sangwan, T. Hasan, J. H. L. Hansen. Automatic Excitement-Level Detection for Sports Highlights Generation. (2010) Center for Robust Speech Systems (CRSS), University of Texas.
       \bibitem{ms}
       W. Labov and M. Baranowski (8 Nov., 2004) 50 msec, submitted to Language Variation and Change. University of Pennylvannia.
       \bibitem{fastfourier}
       Weisstein, Eric W. Fast Fourier Transform. From MathWorld-A Wolfram Web Resource. http://mathworld.wolfram.com/FastFourierTransform.html
       \bibitem{marsyas}
-      Data Sets \- Music Speech. (n.d.). Marsyas \- Music Analysis, Retrieval and Synthesis For Audio Signals. Retrieved Jan., 12, 2016, from http://marsyasweb.appspot.com/download/data\_sets/
+      Data Sets \- Music Speech. (n.d.). Marsyas \- Music Analysis, Retrieval and Synthesis For Audio Signals. Retrieved Jan. 12, 2016, from http://marsyasweb.appspot.com/download/data\_sets/
+      \bibitem{mirexwinnersall}
+      2015:Music/Speech Classification and Detection Results. Retrieved Jan. 14, 2016, from http://www.music-ir.org/mirex/wiki/2015:Music/Speech\_Classification\_and\_Detection\_Results
+      \bibitem{multimodal}
+      J. Ngiam, A. Khosla, M. Kim. Multimodal Deep Learning. (n.d.). Department of Music, Standford University. Retrieved Dec., 11, 2015 from http://ai.stanford.edu/~ang/papers/nipsdlufl10-MultimodalDeepLearning.pdf
+      \bibitem{mirexwinners1}
+      J. Schuluter. Music/Speech Classification and Detection Mirex Submission. Austrian Research Institue for Artificial Intelligence, Vienna. Retrieved Jan. 14, 2016, from http://www.music-ir.org/mirex/abstracts/2015/JS2.pdf
       \bibitem{discretefourier}
       Weisstein, Eric W. Discrete Fourier Transform. From MathWorld-A Wolfram Web Resource. http://mathworld.wolfram.com/DiscreteFourierTransform.html
+      \bibitem{tempovariation}
+      J. Trouvain. Tempo Variation in Speech Production: Implication for Speech Synthesis. (April 2003).
       \bibitem{sysomos}
-      Sysomos: Social Media Monitoring Tools (10 Jan., 2016) Retrieved 10 Jan., 2016 from https://sysomos.com/
+      Sysomos: Social Media Monitoring Tools (10 Jan. 2016) Retrieved 10 Jan. 2016 from https://sysomos.com/
       \bibitem{dftox}
-      The Discrete Fourier Transform. (n.d.). Retrieved Jan., 13, 2016, from http://www.robots.ox.ac.uk/~sjrob/Teaching/SP/l7.pdf
+      The Discrete Fourier Transform. (n.d.). Retrieved Jan. 13, 2016, from http://www.robots.ox.ac.uk/~sjrob/Teaching/SP/l7.pdf
       \bibitem{twitter}
-      Twitter (10 Jan., 2016) Retrieved 10 Jan., 2016 from https://twitter.com/
+      Twitter (10 Jan. 2016) Retrieved 10 Jan. 2016 from https://twitter.com/
       \bibitem{facebook}
-      Facebook (10 Jan., 2016) Retrieved 10 Jan., 2016 from https://www.facebook.com/
+      Facebook (10 Jan. 2016) Retrieved 10 Jan. 2016 from https://www.facebook.com/
       \bibitem{vine}
-      Vine (10 Jan., 2016) Retrieved 10 Jan., 2016 from https://vine.co/
+      Vine (10 Jan. 2016) Retrieved 10 Jan. 2016 from https://vine.co/
       \bibitem{instagram}
-      Instagram (10 Jan., 2016) Retrieved 10 Jan., 2016 from https://www.instagram.com/?hl=en
+      Instagram (10 Jan. 2016) Retrieved 10 Jan. 2016 from https://www.instagram.com/?hl=en
       \bibitem{tumblr}
-      Tumblr (10 Jan., 2016) Retrieved 10 Jan., 2016 from https://www.tumblr.com/
+      Tumblr (10 Jan. 2016) Retrieved 10 Jan. 2016 from https://www.tumblr.com/
       \bibitem{peakdetect}
       E. Billauer. peakdet: Peak detection using MATLAB (2012) Retrived from http://billauer.co.il/peakdet.html
+      \bibitem{pacjulius}
+      Open-Source Large Vocabulary CSR Engine Julius. Julius. (2014) Retrieved Dec. 13, 2015 from http://julius.osdn.jp/en_index.php?q=index-en.html\#documentation
+      \bibitem{paccmu}
+      CMUSphinx Wiki (2015) Retrived Dec. 13, 2015 from http://cmusphinx.sourceforge.net/wiki/
+      \bibitem{packaldi}
+      Kaldi Documentation Retrived Dec. 13, 2015 from http://kaldi.sourceforge.net/
+      \bibitem{pacdragon}
+      Dragon Speech Recognition Software. NUANCE. Retrived Dec. 13, 2015 from http://www.nuance.com/dragon/index.htm
       \bibitem{ftest}
-      F Statistic: Definition and How to find it. Statistics How To (n.d.). Retrieved Jan., 13th, 2016 from http://www.statisticshowto.com/f-statistic/
+      F Statistic: Definition and How to find it. Statistics How To (n.d.). Retrieved Jan. 13, 2016 from http://www.statisticshowto.com/f-statistic/
       \bibitem{sound}
       Feynman, R., \& Leighton, R. (1963). Sound. The wave equation. In The Feynman lectures on physics (New Millennium ed., Vol. 3). Reading, Mass.: Addison-Wesley Pub.
+      \bibitem{cap3play}
+      Video Captioning + Transcription + Subtitling. 3PlayMedia. Retrieved Dec. 13, 2015 from http://www.3playmedia.com/
+      \bibitem{capcaption}
+      About Automatic Sync Technologies. CaptionSync. Retrived Dec. 13, 2015 from http://www.automaticsync.com/captionsync/
+      \bibitem{capamara}
+      Amara - Caption, translate, subtitle and transcribe video. Retrieved Dec. 13, 2015 from https://www.amara.org/en/
+      \bibitem{capvoicebase}
+      APIs for speech recognition and speech analytics. VoiceBase. Retrieved from Dec. 13, 2015 from https://www.voicebase.com/
       \bibitem{humanvoicerange}
       Baken, R. J. (1987). Clinical Measurement of Speech and Voice. London: Taylor and Francis Ltd. (pp. 177)
       \bibitem{comb}
       B. A. Hutchins, Jr. and W. H. Ku. An Adapting Delay Comb Filter for the Resotration of Audio Signals Badly Corrupted with a Periodic Signal of Slowing Changing Frequency. Cornell University, School of Electrical Engineering.
       \bibitem{rplot}
       L. Zhang, C. Bao, X. Liu. Audio Classification Algorithm Based on Nonlinear Chracteristics Analysis. Speech and Audio Signal Processing Laboratory, Beijing University of Technology, Beijing.
+      \bibitem{ffmpeg}
+      A complete, cross-platform solution to record, convert and stream audio and video. Retrieved Dec. 17, 2016 from https://www.ffmpeg.org/
       \bibitem{tempo}
       E. D. Scheirer. Tempo and Beat Analysis of Musical Signals. (n.d.). Machine Listening Group, MIT Media Laboratory.
+      \bibitem{siri}
+      Siri. Yout wish is its command. Apple Inc. (2016) Retrieved from http://www.apple.com/ca/ios/siri/
       \bibitem{computingmfcc}
       S. Molau, M. Pitz, R. Schluter, and H. Ney. Computing Mel-Frequency Cepstral Coefficients On The Power Spectrum. (n.d.). Computer Science Department, University of Technology, Germany
+      \bibitem{sysomosgaze}
+      Sysomos: Gaze, See Your Brand in a Whole New Way (2015). Retrieved Jan. 14, 2016 from https://sysomos.com/products/sysomos-gaze
+      \bibitem{apigoogle}
+      Web Speech API Demonstration (n.d.). Retrieved Dec. 13, 2015 from https://www.google.com/intl/en/chrome/demos/speech.html
+      \bibitem{apiwit}
+      wit.ai Natural Language for Developers (2015). Retrieved Dec. 13, 2015 from https://wit.ai/
+      \bibitem{apiatt}
+      AT\&T Speech to Text API Documentation (2015). Retrieved Dec. 13, 2015 from http://developer.att.com/apis/speech/docs
+      \bibitem{apiibm}
+      IBM Watson Developer Cloud Speech to Text (2015). Retrieved Dec. 13, 2015 from http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/speech-to-text.html
       \bibitem{humanhearing}
       High Frequency Range Test (8-22kHz). (n.d.). Retrieved Jan. 12, 2016 from http://www.audiocheck.net/audiotests\_frequencycheckhigh.php
+      \bibitem{asr}
+      S. Furui. Automatic Speech Recognition and It's Application To Information Extraction (n.d.). Tokyo Institute of Technology
       \bibitem{nyquist}
-      Weisstein, Eric W. Nyquist Frequency. From MathWorld-A Wolfram Web Resource. http://mathworld.wolfram.com/NyquistFrequency.html Retrieved 10 Jan., 2016
+      Weisstein, Eric W. Nyquist Frequency. From MathWorld-A Wolfram Web Resource. http://mathworld.wolfram.com/NyquistFrequency.html Retrieved 10 Jan. 2016
       \bibitem{mirexhome}
       Music Information Retrieval Evaluation eXchange (MIREX) Home. Retrived Jan. 12, 2016 from http://www.music\-ir.org/mirex/wiki/MIREX\_HOME
+      \bibitem{cortana}
+      What is Cortana? Microsoft (2016) Retrieved from http://windows.microsoft.com/en-ca/windows-10/getstarted-what-is-cortana.
       \bibitem{speakergender}
       Z. Ma, E. Fokoue. Speaker Gender Recognition via MFCCs and SVMs. (2013) Center for Quality and Applied Statistics.
       \bibitem{temporallearning}
