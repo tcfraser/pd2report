@@ -10,7 +10,7 @@
 \contentsline {section}{\numberline {3.0 }Proposed Pipeline}{5}
 \contentsline {subsection}{\numberline {3.1}Normalizing Signal}{6}
 \contentsline {subsection}{\numberline {3.2}High-Level Classification}{7}
-\contentsline {section}{\numberline {4.0 }Mel-Frequency Cepstral Coefficients Disected}{7}
+\contentsline {section}{\numberline {4.0 }Mel-Frequency Cepstral Coefficients Dissected}{7}
 \contentsline {subsection}{\numberline {4.1}Windowing}{10}
 \contentsline {subsection}{\numberline {4.2}Discrete Fourier Transform}{11}
 \contentsline {subsection}{\numberline {4.3}Mel-Scale \& Triangular Windowing}{11}
@@ -18,7 +18,7 @@
 \contentsline {subsection}{\numberline {4.5}Deltas \& Delta-Deltas}{16}
 \contentsline {section}{\numberline {5.0 }Performance Evaluation}{16}
 \contentsline {subsection}{\numberline {5.1}Feature List}{17}
-\contentsline {subsection}{\numberline {5.2}Feature Aggregration}{17}
+\contentsline {subsection}{\numberline {5.2}Feature Aggregation}{17}
 \contentsline {subsection}{\numberline {5.3}Beat Extraction}{19}
 \contentsline {subsubsection}{\numberline {5.3.1}Issues with BPM Measurements}{23}
 \contentsline {subsection}{\numberline {5.4}Binary Classification}{24}
